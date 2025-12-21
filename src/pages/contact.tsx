@@ -94,53 +94,6 @@ const Contact = () => {
                 </p>
               </div>
             </div>
-
-            {/* Simple enquiry form (front-end only) */}
-            <div className="bg-[#F4E8D4] border border-[#E2C89A] px-6 py-8 md:px-8 md:py-10 shadow-sm">
-              <h2 className="text-xs tracking-[0.22em] uppercase text-[#2B1400] mb-4">
-                Enquiry form
-              </h2>
-              <form className="space-y-4">
-                <div>
-                  <label className="block text-xs uppercase tracking-[0.16em] mb-1">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full border border-[#E2C89A] bg-white/70 px-3 py-2 text-sm focus:outline-none focus:border-[#C5162C]"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs uppercase tracking-[0.16em] mb-1">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    className="w-full border border-[#E2C89A] bg-white/70 px-3 py-2 text-sm focus:outline-none focus:border-[#C5162C]"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs uppercase tracking-[0.16em] mb-1">
-                    Message
-                  </label>
-                  <textarea
-                    rows={4}
-                    className="w-full border border-[#E2C89A] bg-white/70 px-3 py-2 text-sm focus:outline-none focus:border-[#C5162C]"
-                    placeholder="Tell us about your order or question..."
-                  />
-                </div>
-                <p className="text-[11px] text-[#7A5A40]">
-                  By sending this form you agree that Novelty Bakery may use your details to respond
-                  to your enquiry. See the Privacy Policy for more information.
-                </p>
-                <button
-                  type="submit"
-                  className="mt-3 px-8 py-2 text-[11px] tracking-[0.22em] uppercase border border-[#D1A954] text-[#2B1400] bg-white/60 hover:bg-[#D1A954] hover:text-white transition-colors"
-                >
-                  Send message
-                </button>
-              </form>
-            </div>
           </div>
         </section>
 

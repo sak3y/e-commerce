@@ -1,6 +1,5 @@
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import Banner from "../components/banner";
 
 type Product = {
   name: string;
@@ -52,7 +51,6 @@ const Products = () => {
   return (
     <div className="min-h-screen bg-[#FFF7ED] text-[#1B1B1B]">
       <header>
-        <Banner />
         <Navbar />
       </header>
 

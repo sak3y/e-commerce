@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-4 pt-10 pb-8 text-[13px] text-[#111111]">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-8">
           {/* Column 1 */}
-          <div className="flex flex-col items-center md:items-start gap-3 text-center md:text-left">
+        <div className="flex flex-col items-center md:items-start gap-3 text-center md:text-left">
             <p className="leading-relaxed">
               Novelty Bakery is a much‑loved East Ham high street bakery, serving puff pastry, fresh
               bread and biscuits for the local community.
@@ -76,7 +76,7 @@ const Footer = () => {
               <Link to="/faq" className="hover:text-[#C5162C]">
                 FAQs
               </Link>
-              <Link to="/collection" className="hover:text-[#C5162C]">
+              <Link to="/faq" className="hover:text-[#C5162C]">
                 Collection
               </Link>
             </div>
