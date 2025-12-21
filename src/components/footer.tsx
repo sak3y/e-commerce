@@ -1,7 +1,7 @@
 import Newsletter from "./newsletter";
 import { Link } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
-import { HiOutlineMail } from "react-icons/hi";
+import { GoMail } from "react-icons/go";
 
 const Footer = () => {
   return (
@@ -33,12 +33,12 @@ const Footer = () => {
                 aria-label="Email"
                 className="text-[#C5162C] hover:text-[#8C1C13] transition-colors text-2xl"
               >
-                <HiOutlineMail />
+                <GoMail />
               </Link>
             </div>
           </div>
 
-          {/* Column 2 */}
+
           <div className="text-center">
             <p className="tracking-[0.22em] uppercase text-xs text-[#C5162C] mb-3">Opening times</p>
             <p className="leading-relaxed">
@@ -63,7 +63,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Column 3 */}
           <div className="text-center">
             <Newsletter />
 

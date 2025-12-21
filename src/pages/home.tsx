@@ -21,55 +21,43 @@ const Home = () => {
 const Main = () => {
   return (
     <main>
-      {/* Hero */}
-      <section className="bg-[#FFF7ED] border-b border-[#E8CFA4]">
-        <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
-          <p className="text-center text-[14px] md:text-[18px] tracking-[0.22em] uppercase text-[#B46A3C] mb-4">
-            NOVELTY BAKERY · EAST HAM
-          </p>
-          <div className="h-px w-16 mx-auto mb-8 bg-[#D1A954]" />
+      <section className="bg-[#FCEFD9] border-b border-[#E8CFA4]">
+        <div className="max-w-6xl mx-auto px-6 py-12 md:py-18 grid gap-10 md:grid-cols-[1.4fr,1.1fr] md:items-center">
+          {/* Left: text and button */}
+          <div>
+            <p className="text-[11px] tracking-[0.22em] uppercase text-[#B46A3C] mb-3">
+              Novelty Bakery · East Ham
+            </p>
+            <h1 className="text-3xl md:text-4xl leading-tight text-[#8C1C13] mb-4">
+              Puff pastry for
+              <br />
+              every kind of visit
+            </h1>
+            <p className="text-sm md:text-base leading-relaxed text-[#4A3725] max-w-md">
+              From chicken pastries on the go to cream slices for tea, Novelty Bakery keeps the
+              counter full of East Ham favourites.
+            </p>
 
-          <div className="grid gap-4 md:grid-cols-3">
-            {/* Left image */}
-            <div className="h-[320px] md:h-[460px] overflow-hidden rounded-sm">
-              <img
-                src="src/assets/images/chickenPastry.png"
-                alt="Fresh savoury pastries at Novelty Bakery"
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <button className="mt-8 inline-flex items-center justify-center rounded-full px-9 py-2.5 text-[11px] tracking-[0.22em] uppercase bg-[#8C1C13] text-white hover:bg-[#C5162C] transition-colors">
+              View today&apos;s bakes
+            </button>
+          </div>
 
-            {/* Center text card */}
-            <div className="h-[320px] md:h-[460px] bg-[#E8DCC4] flex flex-col items-center justify-center text-center px-4 sm:px-6 md:px-8 border border-[#E2C89A]">
-              <h1
-                className="
-      text-lg sm:text-xl md:text-2xl lg:text-3xl
-      leading-snug tracking-[0.16em] uppercase text-[#2B1400]
-      max-w-[14rem] sm:max-w-[18rem]
-    "
-              >
-                FRESH PUFF PASTRY,
-                <br />
-                SOFT BREADS
-                <br />& EVERYDAY BISCUITS
-              </h1>
+          {/* Right: product card */}
+          <div className="bg-[#FFF7ED] border border-[#E2C89A] rounded-3xl px-6 py-8 md:px-8 md:py-10 shadow-sm">
+            <p className="text-[11px] tracking-[0.22em] uppercase text-center text-[#B46A3C] mb-4">
+              Chicken pastries
+            </p>
 
-              <p className="mt-4 text-xs sm:text-sm text-[#4A3725] max-w-[18rem]">
-                Baked on High Street North in East Ham, using recipes loved by the local community.
-              </p>
+         
+            <p className="text-center text-sm text-[#4A3725]">
+              Flaky, golden and best eaten warm from the bag.
+            </p>
 
-              <button className="mt-6 px-6 sm:px-8 py-2 text-[10px] sm:text-[11px] tracking-[0.22em] uppercase border border-[#D1A954] text-[#2B1400] bg-white/60 hover:bg-[#D1A954] hover:text-white transition-colors">
-                View products
-              </button>
-            </div>
-
-            {/* Right image */}
-            <div className="h-[320px] md:h-[460px] overflow-hidden rounded-sm">
-              <img
-                src="src/assets/images/fairyCakes.png"
-                alt="Customers enjoying cakes at Novelty Bakery"
-                className="w-full h-full object-cover"
-              />
+            <div className="mt-5 flex justify-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-[#8C1C13]" />
+              <span className="h-2 w-2 rounded-full bg-[#D1A954]" />
+              <span className="h-2 w-2 rounded-full bg-[#E2C89A]" />
             </div>
           </div>
         </div>
@@ -78,10 +66,9 @@ const Main = () => {
       <section className="bg-[#FFF7ED] border-b border-[#E8CFA4]">
         <div className="max-w-6xl mx-auto px-4 py-16 md:py-24">
           <div className="grid gap-8 md:grid-cols-2 md:items-stretch">
-            {/* Shop image – taller */}
             <div className="h-[360px] md:h-[520px] overflow-hidden rounded-sm border border-[#E2C89A]/70">
               <img
-                src="src/assets/images/shopFront.png"
+                src="src/assets/images/chickenPastry.png"
                 alt="Front of Novelty Bakery"
                 className="w-full h-full object-cover"
               />
