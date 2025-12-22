@@ -17,7 +17,7 @@ const Home = () => {
       <main>
         {/* Hero / intro */}
         <section className="relative border-b border-[#E8CFA4] bg-[#FFF7ED]">
-          {/* Background image band */}
+          {/* Background image */}
           <div className="relative z-0 h-[260px] md:h-[420px] overflow-hidden">
             <img
               src={fairyCakes}
@@ -41,7 +41,7 @@ const Home = () => {
                 </h1>
 
                 <p className="text-[15px] md:text-[17px] leading-relaxed text-[#4A3725] max-w-3xl mx-auto mb-9">
-                  Fresh baked pastries, breads, cakes, and everyday treats.
+                  Fresh puff pastries, breads, cakes, and everyday treats.
                 </p>
 
                 {/* Gold‑accent button */}

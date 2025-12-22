@@ -59,16 +59,16 @@ const Navbar = () => {
           </nav>
         </div>
 
-        {/* Mobile: keep your old layout, just re-use links */}
+        {/* Mobile */}
         <div className="flex items-center justify-between py-3 md:py-4 md:hidden">
           <div className="flex-1" />
           <div className="flex flex-col items-center">
             <Link to="/" className="leading-none text-center">
-              <span className="block text-xl text-[#8C1C13] font-serif tracking-[0.18em] uppercase">
-                Novelty
+               <span className="block text-lg md:text-xl text-[#8C1C13] tracking-[0.01em] uppercase">
+                Novelty Bakery
               </span>
-              <span className="block text-[10px] tracking-[0.25em] uppercase text-[#B46A3C] mt-1">
-                Bakery · East Ham
+              <span className="block text-[10px] md:text-[11px] tracking-[0.2em] uppercase text-[#B46A3C] mt-1">
+                 East Ham
               </span>
             </Link>
           </div>
@@ -78,9 +78,9 @@ const Navbar = () => {
               onClick={() => setMobileMenuOpen((v) => !v)}
               aria-label="Toggle menu"
             >
-              <span className="block w-6 h-0.5 mb-1.5 bg-[#8C1C13]" />
-              <span className="block w-6 h-0.5 mb-1.5 bg-[#8C1C13]" />
-              <span className="block w-6 h-0.5 bg-[#8C1C13]" />
+              <span className="block w-5 h-0.5 mb-1 bg-[#8C1C13]" />
+              <span className="block w-5 h-0.5 mb-1 bg-[#8C1C13]" />
+              <span className="block w-5 h-0.5 bg-[#8C1C13]" />
             </button>
           </div>
         </div>
