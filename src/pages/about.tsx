@@ -1,5 +1,6 @@
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import shopFront from "../assets/images/shop-front.png"
 
 const About = () => {
   return (
@@ -34,7 +35,7 @@ const About = () => {
             {/* Shop photo slot */}
             <div className="h-[260px] md:h-[420px] overflow-hidden rounded-sm border border-[#E2C89A]/70">
               <img
-                src="src/assets/images/shopFront.png"
+                src={shopFront}
                 alt="Corner view of Novelty Bakery on High Street North"
                 className="w-full h-full object-cover"
               />
