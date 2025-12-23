@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 const AboutCard = () => {
   return (
     <section className="relative border-b border-[#E8CFA4] bg-[#FFF7ED]">
-      {/* Background pastry image with centered overlay */}
-      <div className="relative z-0 h-[360px] md:h-[460px] overflow-hidden">
+      <div className="relative z-0 h-[360px] md:h-[690px] overflow-hidden">
         <img
           src={heroBg}
           alt="Fresh cream pastries"
@@ -31,9 +30,8 @@ const AboutCard = () => {
                 </p>
 
                 <p className="text-xs md:text-[14px] leading-relaxed text-[#4A3725] max-w-xl mx-auto mb-7">
-                  Each day the counter is filled with pastries, savoury snacks, loaves, cream
-                  slices and simple celebration cakes, with trays of fresh favourites ready to
-                  take home or share.
+                  Serving the community with quality baked goods since 1985, and specialists in puff pastry and fresh bread, each day the counter is filled with pastries, savoury snacks, loaves, cream slices and simple celebration cakes, with trays of fresh favourites ready to take home or share.
+
                 </p>
 
                 <Link to="/about">

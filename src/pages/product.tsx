@@ -13,9 +13,9 @@ const categories: { title: string; intro?: string; items: Product[] }[] = [
     title: "Puff pastry favourites",
     intro: "Crisp layers, soft centres – baked fresh each morning.",
     items: [
-      { name: "Chicken pastry", description: "Flaky puff with spiced chicken filling.", price: "£2.50" },
-      { name: "Veg puff", description: "Seasoned vegetable filling in golden pastry.", price: "£2.30" },
-      { name: "Sausage roll", description: "Classic savoury roll, best warm.", price: "£2.20" },
+      { name: "Chicken pastry", description: "Flaky puff with spiced chicken filling.", price: "£1.20" },
+      { name: "Veg puff", description: "Seasoned vegetable filling in golden pastry.", price: "£1.80" },
+      { name: "Sausage roll", description: "Classic savoury roll, best warm.", price: "£1.70" },
     ],
   },
   {
@@ -27,15 +27,15 @@ const categories: { title: string; intro?: string; items: Product[] }[] = [
       { name: "Bread rolls", description: "White or brown, baked daily.", price: "£0.50 each" },
     ],
   },
-  {
-    title: "Cakes & slices",
-    intro: "Simple celebration cakes and counter treats.",
-    items: [
-      { name: "Cream slice", description: "Layers of pastry with whipped cream.", price: "£2.80" },
-      { name: "Jam sponge", description: "Soft sponge with jam and icing.", price: "£2.50" },
-      { name: "Celebration cakes", description: "Made to order for birthdays and family events.", note: "Price on enquiry" },
-    ],
-  },
+  // {
+  //   // title: "Cakes & slices",
+  //   // intro: "Simple celebration cakes and counter treats.",
+  //   // items: [
+  //   //   { name: "Cream slice", description: "Layers of pastry with whipped cream.", price: "£2.80" },
+  //   //   { name: "Jam sponge", description: "Soft sponge with jam and icing.", price: "£2.50" },
+  //   //   { name: "Celebration cakes", description: "Made to order for birthdays and family events.", note: "Price on enquiry" },
+  //   // ],
+  // },
   {
     title: "Biscuits & small bakes",
     intro: "For tea breaks, school runs and after‑dinner treats.",
@@ -62,12 +62,11 @@ const Products = () => {
               Products
             </p>
             <h1 className="text-2xl md:text-3xl tracking-[0.14em] uppercase text-[#2B1400]">
-              Everyday bakes & celebration cakes
+              Everyday bakes & fresh bread
             </h1>
             <div className="h-px w-16 mx-auto mt-4 mb-6 bg-[#D1A954]" />
             <p className="mt-2 text-sm md:text-base leading-relaxed text-[#4A3725] max-w-2xl mx-auto">
-              This menu gives a flavour of what you’ll usually find in the counter. For custom cakes
-              or specific requests, please contact the bakery directly.
+              This menu gives a flavour of what you’ll usually find in the counter.
             </p>
           </div>
         </section>
