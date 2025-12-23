@@ -1,8 +1,8 @@
 const Gmap = () => {
   return (
-    <section className="py-8 bg-white">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="w-full h-64 md:h-80 border border-pink-200">
+    <section className="py-18  bg-white">
+      <div className="max-w-6xl mx-auto px-4 md:px-12">
+        <div className="w-full h-64 md:h-100">
           {/* Google Map Embed */}
           <iframe
             title="Novelty Bakery map"
