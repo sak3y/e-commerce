@@ -3,19 +3,19 @@ import Footer from "../components/footer";
 
 const faqs = [
   {
-    question: "Do you make custom celebration cakes?",
+    question: "Do you offer delivery?",
     answer:
-      "Yes. We make simple celebration cakes for birthdays and family occasions. The best way to order is to pop into the shop or call to discuss your date, size and flavour.",
+      "At the moment cakes and pastries are mainly collected from the shop on High Street North. For larger orders, we may be able to arrange local delivery by agreement.",
+  },
+  {
+    question: "Do you make custom cakes?",
+    answer:
+      "Yes. We make simple cakes for birthdays and family occasions. The best way to order is to pop into the shop or call to discuss your date, size and flavour.",
   },
   {
     question: "How much notice do you need for a cake?",
     answer:
       "For most cakes we ask for at least 3–5 days’ notice. For very busy weekends or larger orders, more notice is helpful so we can fit you in.",
-  },
-  {
-    question: "Do you offer delivery?",
-    answer:
-      "At the moment cakes and pastries are mainly collected from the shop on High Street North. For larger orders, we may be able to arrange local delivery by agreement.",
   },
   {
     question: "Can I reserve items to collect later?",
@@ -30,7 +30,7 @@ const faqs = [
   {
     question: "How can I place an order or ask a question?",
     answer:
-      "You can visit the shop, phone 020 8471 3415 or email hello@noveltybakery.co.uk. You can also follow @noveltybakery_ on Instagram to see what is in the counter each day.",
+      "You can visit the shop, phone 020 8471 3415 or email us. You can also follow @noveltybakery_ on Instagram to see what is in the counter each day.",
   },
 ];
 
@@ -67,9 +67,7 @@ const Faq = () => {
                   <dt className="text-sm md:text-base font-semibold text-[#2B1400]">
                     {item.question}
                   </dt>
-                  <dd className="mt-2 text-sm leading-relaxed text-[#4A3725]">
-                    {item.answer}
-                  </dd>
+                  <dd className="mt-2 text-sm leading-relaxed text-[#4A3725]">{item.answer}</dd>
                 </div>
               ))}
             </dl>

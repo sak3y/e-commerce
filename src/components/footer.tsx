@@ -76,7 +76,7 @@ const Footer = () => {
                 FAQs
               </Link>
               <Link to="/faq" className="hover:text-[#8C1C13]">
-                Collection
+                Delivery
               </Link>
             </div>
           </div>
