@@ -22,9 +22,7 @@ const About = () => {
               With Regulars, Not Customers
             </h1>
             <p className="mt-6 text-sm md:text-base leading-relaxed text-[#4A3725] max-w-2xl mx-auto">
-              Novelty Bakery sits on the corner of High Street North, the place people duck into
-              for a warm loaf on the way home or a box of cream slices for a family visit. The ovens
-              start before sunrise so the shelves are stacked by the time East Ham wakes up.
+              Novelty Bakery sits on the corner of High Street North and is a family‑owned business. It is the sort of place you duck into when you want a warm chicken pastry or a soft piece of bread. Since opening in 1985, we have been open almost every single day. We always make sure our shelves are well stocked, so if you are free, why not pop by and treat yourself?
             </p>
           </div>
         </section>
