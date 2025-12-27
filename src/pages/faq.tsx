@@ -1,5 +1,6 @@
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import { Link } from "react-router-dom";
 
 const faqs = [
   {
@@ -29,8 +30,19 @@ const faqs = [
   },
   {
     question: "How can I place an order or ask a question?",
-    answer:
-      "You can visit the shop, phone 020 8471 3415 or email us. You can also follow @noveltybakery_ on Instagram to see what is in the counter each day.",
+    answer: (
+      <>
+        You can visit the shop, call 020 8471 3415 or{" "}
+        <Link to="/contact" className="text-yellow-600">
+          email us
+        </Link>
+        . You can also follow on{" "}
+        <a href="https://www.instagram.com/noveltybakery_/" className="text-yellow-600">
+          Instagram
+        </a>{" "}
+        to see what is in the counter each day.
+      </>
+    ),
   },
 ];
 
