@@ -24,8 +24,8 @@ const Cookie: React.FC = () => {
   if (!open) return null;
 
   return (
-    <div className="fixed bottom-0 z-50">
-      <div className="mx-auto max-w-6xl px-4 pb-4">
+    <div className="fixed inset-x-0 bottom-0 z-50 flex justify-center">
+      <div className="mx-auto max-w-6xl px-4 pb-4 w-full">
         <div className="border border-[#F3D39A] bg-[#FFFBF5] px-4 py-6 md:px-6 md:py-8 shadow-[0_-8px_30px_rgba(0,0,0,0.12)]">
           <div className="flex flex-col gap-3 text-xs md:text-sm text-[#1B1B1B] md:flex-row md:items-center md:justify-between">
             <p className="leading-relaxed">
