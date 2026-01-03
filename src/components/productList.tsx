@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import pastriesImg from "../assets/images/pastries.png";
 import palmiersImg from "../assets/images/palmier.png";
 import biscuitImg from "../assets/images/biscuit-rusk.png";
+import fairyCakesImg from "../assets/images/fairy-cake.png";
 
 const CategoriesSection = () => {
   const items = [
@@ -22,6 +23,12 @@ const CategoriesSection = () => {
       image: biscuitImg,
       text: "Crisp rusks and biscuits perfect with tea, coffee or for the biscuit tin.",
       to: "/products#biscuits",
+    },
+    {
+      title: "Fairy Cakes",
+      image: fairyCakesImg, 
+      text: "Little sponge cakes topped with simple icing, perfect for parties and tea breaks.",
+      to: "/products#fairy-cake",
     },
   ];
 
@@ -46,17 +53,15 @@ const CategoriesSection = () => {
                   <h3 className="text-lg md:text-2xl font-bold leading-snug text-neutral-900">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-md text-neutral-700">
-                    {item.text}
-                  </p>
+                  <p className="mt-2 text-md text-neutral-700">{item.text}</p>
                 </div>
 
                 <Link to={item.to}>
                   <button
-                    className="mt-1 inline-flex h-9 w-9 items-center justify-center bg-black text-white text-xl leading-none hover:bg-neutral-800 transition-colors"
+                    className="mt-1 inline-flex h-8 w-8 items-center justify-center rounded border border-neutral-600 text-sm text-neutral-700 bg-white hover:bg-neutral-100 hover:border-neutral-400 transition-colors"
                     aria-label={`View ${item.title}`}
                   >
-                     →
+                    &#8250;
                   </button>
                 </Link>
               </div>
