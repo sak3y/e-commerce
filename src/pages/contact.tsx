@@ -1,7 +1,7 @@
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import Gmap from "../components/gmap";
-import Hero from "../assets/images/bakery-aes.png";
+import Hero from "../assets/images/br-bakery-bg.png";
 import { FaInstagram } from "react-icons/fa";
 import EmailForm from "../components/form";
 

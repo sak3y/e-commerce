@@ -1,4 +1,4 @@
-import treatsBg from "../assets/images/white-pattern.png"
+import treatsBg from "../assets/images/w-bakery-bg.png"
 const TreatsIntro = () => {
   return (
     <section className="relative py-12 md:py-20 [font-family:'Baloo_2',cursive]">
@@ -9,13 +9,13 @@ const TreatsIntro = () => {
           alt="Bakery treats background"
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-white/50" />
+        <div className="absolute inset-0 bg-white/80" />
       </div>
 
       {/* Content on right half */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-10">
         <div className="grid md:grid-cols-2 gap-10">
-          <div className="hidden md:block" /> {/* left empty */}
+          <div className="hidden md:block" />
           <div>
             <h2 className="text-3xl md:text-4xl font-bold tracking-[0.04em] text-neutral-900 mb-12">
               Treats to Take Home

@@ -96,14 +96,14 @@ const CategoriesSection = () => {
           <button
             type="button"
             onClick={() => scrollByAmount("left")}
-            className="inline-flex h-9 px-4 items-center justify-center border border-neutral-300 text-xs tracking-[0.14em] uppercase text-neutral-700 bg-white hover:bg-neutral-100 transition-colors"
+            className="inline-flex h-9 px-4 items-center justify-center border border-[#D4AF37] text-xs tracking-[0.14em] uppercase text-neutral-700 bg-white hover:bg-[#FFF8E1] transition-colors"
           >
             ← Prev
           </button>
           <button
             type="button"
             onClick={() => scrollByAmount("right")}
-            className="inline-flex h-9 px-4 items-center justify-center border border-neutral-300 text-xs tracking-[0.14em] uppercase text-neutral-700 bg-white hover:bg-neutral-100 transition-colors"
+            className="inline-flex h-9 px-4 items-center justify-center border border-[#D4AF37] text-xs tracking-[0.14em] uppercase text-neutral-700 bg-white hover:bg-[#FFF8E1] transition-colors"
           >
             Next →
           </button>
