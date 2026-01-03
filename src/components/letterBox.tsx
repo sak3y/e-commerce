@@ -2,7 +2,7 @@ import treatsBg from "../assets/images/white-pattern.png";
 
 const TreatsIntro = () => {
   return (
-    <section className="relative py-12 md:py-16 [font-family:'Baloo_2',cursive]">
+    <section className="relative py-12 md:py-20 [font-family:'Baloo_2',cursive]">
       {/* Background image */}
       <div className="absolute inset-0">
         <img

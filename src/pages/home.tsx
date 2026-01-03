@@ -17,12 +17,13 @@ const Home = () => {
 
       <main>
         <Hero />
-        <AboutCard />
         <CategoriesSection />
+        <AboutCard />
+        <Gmap />
         <LetterboxIntro />
       </main>
 
-      <Gmap />
+
       <Footer />
     </div>
   );
