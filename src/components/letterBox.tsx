@@ -9,7 +9,7 @@ const TreatsIntro = () => {
           alt="Bakery treats background"
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-white/80" />
+        <div className="absolute inset-0 bg-white/70" />
       </div>
 
       {/* Content on right half */}
