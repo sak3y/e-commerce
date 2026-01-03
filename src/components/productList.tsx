@@ -26,7 +26,7 @@ const CategoriesSection = () => {
     },
     {
       title: "Fairy Cakes",
-      image: fairyCakesImg, 
+      image: fairyCakesImg,
       text: "Little sponge cakes topped with simple icing, perfect for parties and tea breaks.",
       to: "/products#fairy-cake",
     },
@@ -35,9 +35,13 @@ const CategoriesSection = () => {
   return (
     <section className="border-t border-neutral-200 bg-white py-16 md:py-24 [font-family:'Baloo_2',cursive]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid gap-10 md:gap-12 md:grid-cols-3">
+        {/* Scroll container */}
+        <div className="flex gap-8 overflow-x-auto pb-4 snap-x snap-mandatory">
           {items.map((item) => (
-            <article key={item.title} className="flex flex-col">
+            <article
+              key={item.title}
+              className="flex-shrink-0 w-[80%] sm:w-[55%] md:w-[32%] snap-start flex flex-col"
+            >
               <Link to={item.to}>
                 <div className="aspect-[4/3] overflow-hidden border border-neutral-200 bg-white">
                   <img
@@ -53,7 +57,9 @@ const CategoriesSection = () => {
                   <h3 className="text-lg md:text-2xl font-bold leading-snug text-neutral-900">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-md text-neutral-700">{item.text}</p>
+                  <p className="mt-2 text-sm md:text-[15px] text-neutral-700">
+                    {item.text}
+                  </p>
                 </div>
 
                 <Link to={item.to}>
