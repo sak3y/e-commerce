@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <section className="relative bg-white [font-family:'Baloo_2',cursive]">
       {/* Background image with soft dark overlay */}
-      <div className="relative z-0 h-[320px] md:h-[480px] overflow-hidden">
+      <div className="relative z-0 h-[320px] md:h-[420px] overflow-hidden">
         <img
           src={heroImg}
           alt="Crisp rusk biscuits"
@@ -15,7 +15,7 @@ const Hero = () => {
       </div>
 
       {/* Centered card overlapping hero */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
+      <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6">
         <div className="md:-mt-28 -mt-20 bg-white shadow-[0_18px_45px_rgba(0,0,0,0.16)] border border-neutral-200 px-6 sm:px-10 py-9 text-center rounded-sm">
           <p className="text-xs md:text-sm tracking-[0.18em] uppercase text-neutral-600 mb-3">
             Fresh bakes in East Ham
@@ -37,7 +37,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* breathing space below overlap */}
       <div className="h-10 md:h-14" />
     </section>
   );
