@@ -1,27 +1,38 @@
-const LetterboxIntro = () => {
+import treatsBg from "../assets/images/bakery-aes.png";
+
+const TreatsIntro = () => {
   return (
-    <section className="bg-white py-12 md:py-16 [font-family:'Baloo_2',cursive]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+    <section className="relative py-12 md:py-16 [font-family:'Baloo_2',cursive]">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img
+          src={treatsBg}
+          alt="Bakery treats background"
+          className="w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-white/70" />
+      </div>
+
+      {/* Content */}
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
         <h2 className="text-3xl md:text-4xl font-bold tracking-[0.04em] text-neutral-900 mb-6">
-          Letterbox Treats
+          Treats to Take Home
         </h2>
 
         <p className="text-sm md:text-base leading-relaxed text-neutral-800 mb-4">
-          Indulge in the taste of Novelty Bakery, no matter where you are.
+          From puff pastries to rusks and biscuits, Novelty Bakery is stocked with bakes to take home for tea time or to share with family.
         </p>
 
         <p className="text-sm md:text-base leading-relaxed text-neutral-800 mb-4">
-          Our letterbox treats bring bakes straight to your doorstep with a mix of puff
-          pastry favourites, biscuits and other sweet bites, all made by our team in East Ham.
+          Trays of savoury snacks, simple cakes and everyday favourites are baked on High Street North and put straight onto the counter.
         </p>
 
         <p className="text-sm md:text-base leading-relaxed text-neutral-800">
-          Perfect for a cosy treat or a thoughtful gift, these bakes fit through the letterbox
-          and can be enjoyed with tea, coffee or shared at home or work.
+          Pop in, choose a box or a bag of your favourites, and head home with something fresh from the bakery.
         </p>
       </div>
     </section>
   );
 };
 
-export default LetterboxIntro;
+export default TreatsIntro;
