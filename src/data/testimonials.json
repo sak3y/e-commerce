@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Sarah Mitchell",
+    "location": "East Ham",
+    "text": "The puff pastries here are absolutely divine! I stop by every morning on my way to work. The quality and freshness is unmatched in the area.",
+    "rating": 5
+  },
+  {
+    "name": "James Chen",
+    "location": "Newham",
+    "text": "Been coming here for years and it never disappoints. The bread is always fresh and the staff are wonderful. A true gem in the community!",
+    "rating": 5
+  },
+  {
+    "name": "Amara Patel",
+    "location": "Manor Park",
+    "text": "Best bakery in East London! Their cakes are perfect for special occasions and everyday treats. Highly recommend the chocolate croissants!",
+    "rating": 5
+  },
+  {
+    "name": "David Thompson",
+    "location": "Stratford",
+    "text": "I've tried bakeries all over London, but Novelty Bakery is something special. The family recipes really shine through in every bite.",
+    "rating": 5
+  },
+  {
+    "name": "Maria Rodriguez",
+    "location": "Plaistow",
+    "text": "The smell alone draws you in! Everything is baked fresh daily and you can taste the difference. My whole family loves this place.",
+    "rating": 5
+  },
+  {
+    "name": "Oliver Bennett",
+    "location": "Upton Park",
+    "text": "Incredible selection and fair prices. The staff remember my usual order which makes me feel like family. Can't recommend enough!",
+    "rating": 5
+  }
+]

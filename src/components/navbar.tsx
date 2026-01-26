@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
+
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isAtTop, setIsAtTop] = useState(true);
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
@@ -16,10 +21,33 @@ const Navbar = () => {
   const leftLinks = links.slice(0, 2);
   const rightLinks = links.slice(2);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Check if we're at the very top (within banner height)
+      setIsAtTop(scrollTop <= 8);
+      
+      if (scrollTop < lastScrollTop) {
+        setIsVisible(true);
+      } else if (scrollTop > lastScrollTop && scrollTop > 50) {
+        setIsVisible(false);
+      }
+      
+      setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollTop]);
+
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md font-['Baloo_2',cursive] border-b border-neutral-200 transition-all duration-300">
+    <header 
+      className={`fixed left-0 right-0 z-40 bg-white/95 backdrop-blur-md font-['Baloo_2',cursive] border-b border-neutral-200 transition-all duration-300 ease-in-out ${
+        isVisible ? (isAtTop ? 'top-[40px]' : 'top-0') : '-top-full'
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-4">
-        {/* desktop */}
         <div className="hidden md:flex items-center h-20">
           <nav className="flex items-center gap-6 text-sm uppercase tracking-[0.12em] text-neutral-800 flex-1 justify-end pr-8">
             {leftLinks.map((item) => (

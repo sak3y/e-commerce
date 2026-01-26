@@ -5,11 +5,12 @@ import Footer from "../components/footer";
 
 import Banner from "../components/banner";
 import Hero from "../components/hero";
-const CategoriesSection = lazy(() => import("../components/catgegoriesList"));
+const Carousel = lazy(() => import("../components/carousel"));
 import AboutCard from "../components/aboutCard";
 import Letterbox from "../components/letterBox";
 import RevLetterBox from "../components/revLetterBox";
 import Gmap from "../components/gmap";
+import TestimonialsSection from "../components/testimonials";
 
 const Home = () => {
   return (
@@ -22,10 +23,11 @@ const Home = () => {
       <main>
         <Hero />
         <Suspense fallback={<div>Producst are loading...</div>}>
-          <CategoriesSection />
+          <Carousel />
         </Suspense>
-        <AboutCard />
+        <TestimonialsSection />
         <Letterbox />
+        <AboutCard />
         <RevLetterBox />
 
         <Gmap />
