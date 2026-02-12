@@ -15,7 +15,7 @@ const Contact = () => {
       <main>
         {/* Hero strip */}
         <section className="border-b border-neutral-200">
-          <div className="h-[200px] md:h-[260px] overflow-hidden">
+          <div className="h-[200px] md:h-[320px] overflow-hidden">
             <img
               src={Hero}
               alt="Novelty Bakery cupcakes"

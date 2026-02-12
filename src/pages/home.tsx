@@ -22,12 +22,13 @@ const Home = () => {
 
       <main>
         <Hero />
+            <AboutCard />
         <Suspense fallback={<div>Producst are loading...</div>}>
           <Carousel />
         </Suspense>
         <TestimonialsSection />
         <Letterbox />
-        <AboutCard />
+    
         <RevLetterBox />
 
         <Gmap />

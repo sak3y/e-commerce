@@ -33,9 +33,9 @@ const AboutCard = () => {
             </p>
 
             <Link to="/about" className="w-full sm:w-auto">
-              <button className="group relative w-full sm:w-auto overflow-hidden border-2 border-[#D4AF37] px-8 py-3 text-sm font-bold uppercase tracking-wider text-neutral-900 transition-all duration-300 hover:text-white hover:shadow-lg hover:-translate-y-0.5">
+              <button className="group relative w-full sm:w-auto overflow-hidden border-2 border-[#D4AF37] px-8 py-3 text-sm font-bold uppercase tracking-wider hover:border-black hover:bg-black text-neutral-900 transition-all duration-300 hover:text-white hover:shadow-lg">
                 <span className="relative z-10">More about us</span>
-                <span className="absolute inset-0 bg-[#D4AF37] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+             
               </button>
             </Link>
           </div>

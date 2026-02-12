@@ -10,8 +10,7 @@ const About = () => {
       </header>
 
       <main>
-        {/* Intro */}
-        <section className="border-b border-neutral-200">
+        <section className="border-b mt-20 border-neutral-200">
           <div className="max-w-5xl mx-auto px-4 py-14 md:py-20 text-center">
             <p className="text-[11px] tracking-[0.18em] uppercase text-neutral-600 mb-3">
               About Novelty Bakery

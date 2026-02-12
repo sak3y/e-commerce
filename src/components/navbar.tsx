@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-
-
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,19 +19,21 @@ const Navbar = () => {
   const leftLinks = links.slice(0, 2);
   const rightLinks = links.slice(2);
 
+  const location = useLocation();
+  const isLanding = location.pathname === "/";
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      
-      // Check if we're at the very top (within banner height)
+
       setIsAtTop(scrollTop <= 8);
-      
+
       if (scrollTop < lastScrollTop) {
         setIsVisible(true);
       } else if (scrollTop > lastScrollTop && scrollTop > 50) {
         setIsVisible(false);
       }
-      
+
       setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop);
     };
 
@@ -42,9 +42,9 @@ const Navbar = () => {
   }, [lastScrollTop]);
 
   return (
-    <header 
+    <header
       className={`fixed left-0 right-0 z-40 bg-white/95 backdrop-blur-md font-['Baloo_2',cursive] border-b border-neutral-200 transition-all duration-300 ease-in-out ${
-        isVisible ? (isAtTop ? 'top-[40px]' : 'top-0') : '-top-full'
+        isVisible ? (isAtTop && isLanding ? "top-[40px]" : "top-0") : "-top-full"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4">
@@ -60,7 +60,7 @@ const Navbar = () => {
               </Link>
             ))}
           </nav>
-     
+
           <Link to="/" className="flex-shrink-0 px-4 mx-4">
             <span className="block text-2xl font-bold scale-y-110 text-neutral-900 uppercase">
               Novelty Bakery
@@ -106,7 +106,10 @@ const Navbar = () => {
           <nav className="md:hidden pb-2 text-sm uppercase tracking-[0.12em] text-neutral-900 border-t border-neutral-200">
             <ul className="space-y-2">
               {links.map((item) => (
-                <li key={item.to} className="overflow-hidden border-neutral-200 hover:bg-neutral-50">
+                <li
+                  key={item.to}
+                  className="overflow-hidden border-neutral-200 hover:bg-neutral-50"
+                >
                   <Link
                     to={item.to}
                     className="block py-3"

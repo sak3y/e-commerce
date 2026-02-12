@@ -31,11 +31,11 @@ const Carousel = () => {
   const scrollByAmount = (direction: "left" | "right") => {
     const node = scrollRef.current;
     if (!node) return;
-    
-    const cardWidth = node.querySelector('article')?.clientWidth || 0;
-    const gap = 24; // 6 in tailwind = 24px
+
+    const cardWidth = node.querySelector("article")?.clientWidth || 0;
+    const gap = 24;
     const scrollAmount = cardWidth + gap;
-    
+
     node.scrollBy({
       left: direction === "right" ? scrollAmount : -scrollAmount,
       behavior: "smooth",
@@ -61,7 +61,6 @@ const Carousel = () => {
             <span className="text-2xl text-neutral-700">‹</span>
           </button>
 
-          {/* Right scroll button - overlay */}
           <button
             type="button"
             onClick={() => scrollByAmount("right")}
@@ -76,7 +75,6 @@ const Carousel = () => {
             <span className="text-2xl text-neutral-700">›</span>
           </button>
 
-          {/* Scrollable container */}
           <div
             ref={scrollRef}
             className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide scroll-smooth"
@@ -128,7 +126,6 @@ const Carousel = () => {
           </div>
         </div>
 
-        {/* Mobile scroll indicators */}
         <div className="mt-6 flex justify-center gap-2 md:hidden">
           {Products.map((_, index) => (
             <div

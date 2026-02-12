@@ -10,7 +10,7 @@ const Products = () => {
       </header>
 
       <main>
-        <section className="border-b border-neutral-200">
+        <section className="border-b mt-20 border-neutral-200">
           <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
             <div className="mb-8 flex flex-wrap items-baseline justify-between gap-4">
               <h2 className="text-sm tracking-[0.18em] uppercase text-neutral-800">
