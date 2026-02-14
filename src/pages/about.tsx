@@ -10,9 +10,16 @@ const About = () => {
       </header>
 
       <main>
-        <section className="border-b mt-20 border-neutral-200">
+        {/* Hero section — warm cream tint */}
+        <section
+          className="border-b mt-10 border-neutral-200"
+          style={{ backgroundColor: "#fdf8f0" }}
+        >
           <div className="max-w-5xl mx-auto px-4 py-14 md:py-20 text-center">
-            <p className="text-[11px] tracking-[0.18em] uppercase text-neutral-600 mb-3">
+            <p
+              className="text-[11px] tracking-[0.18em] uppercase mb-3"
+              style={{ color: "#b07d2e" }}
+            >
               About Novelty Bakery
             </p>
             <h1 className="text-2xl md:text-3xl tracking-[0.08em] uppercase text-neutral-900">
@@ -20,7 +27,17 @@ const About = () => {
               <br />
               with regulars, not customers
             </h1>
-            <p className="mt-6 text-sm md:text-base leading-relaxed text-neutral-700 max-w-2xl mx-auto">
+            {/* thin amber rule under heading */}
+            <div
+              className="mx-auto mt-4 mb-6"
+              style={{
+                width: "48px",
+                height: "2px",
+                backgroundColor: "#c9952a",
+                borderRadius: "1px",
+              }}
+            />
+            <p className="text-sm md:text-base leading-relaxed text-neutral-700 max-w-2xl mx-auto">
               Novelty Bakery sits on the corner of High Street North and is a family‑owned business.
               It is the sort of place you duck into when you want a warm chicken pastry or a soft
               piece of bread. Since opening in 1985, we have been open almost every single day. We
@@ -41,8 +58,15 @@ const About = () => {
               />
             </div>
 
-            <div className="bg-white border border-neutral-200 px-6 py-10 md:px-10 md:py-14 flex flex-col justify-center shadow-sm">
-              <h2 className="text-xs tracking-[0.18em] uppercase text-neutral-700 mb-3">
+            {/* card with very faint warm tint */}
+            <div
+              className="border border-neutral-200 px-6 py-10 md:px-10 md:py-14 flex flex-col justify-center shadow-sm rounded-sm"
+              style={{ backgroundColor: "#fffdf8" }}
+            >
+              <h2
+                className="text-xs tracking-[0.18em] uppercase mb-3"
+                style={{ color: "#b07d2e" }}
+              >
                 From morning loaves to late‑day treats
               </h2>
               <p className="text-sm leading-relaxed text-neutral-700 mb-4">
@@ -59,41 +83,55 @@ const About = () => {
           </div>
         </section>
 
-        {/* Values */}
-        <section className="border-b border-neutral-200">
+        {/* Values — warm background with amber accents */}
+        <section
+          className="border-b border-neutral-200"
+          style={{ backgroundColor: "#fdf8f0" }}
+        >
           <div className="max-w-5xl mx-auto px-4 py-12 md:py-16">
-            <p className="text-[11px] tracking-[0.18em] uppercase text-neutral-600 mb-4 text-center">
+            <p
+              className="text-[11px] tracking-[0.18em] uppercase mb-4 text-center"
+              style={{ color: "#b07d2e" }}
+            >
               What matters here
             </p>
 
             <div className="grid gap-8 md:grid-cols-3 text-sm text-neutral-700">
-              <div>
-                <h3 className="text-xs tracking-[0.16em] uppercase text-neutral-900 mb-2">
-                  Fresh, not fussy
-                </h3>
-                <p>
-                  Everyday pastry, bread and cakes you recognise, baked early so they are ready when
-                  you need them.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xs tracking-[0.16em] uppercase text-neutral-900 mb-2">
-                  For the neighbourhood
-                </h3>
-                <p>
-                  Regulars, school‑run stops and families picking up a treat – Novelty is built
-                  around East Ham routines.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xs tracking-[0.16em] uppercase text-neutral-900 mb-2">
-                  Cakes for moments
-                </h3>
-                <p>
-                  From cream slices to custom birthday cakes, the bakes are made to be shared at
-                  real‑life tables, not just on screens.
-                </p>
-              </div>
+              {[
+                {
+                  title: "Fresh, not fussy",
+                  body: "Everyday pastry, bread and cakes you recognise, baked early so they are ready when you need them.",
+                },
+                {
+                  title: "For the neighbourhood",
+                  body: "Regulars, school‑run stops and families picking up a treat – Novelty is built around East Ham routines.",
+                },
+                {
+                  title: "Cakes for moments",
+                  body: "From cream slices to custom birthday cakes, the bakes are made to be shared at real‑life tables, not just on screens.",
+                },
+              ].map(({ title, body }) => (
+                <div
+                  key={title}
+                  className="bg-white border border-neutral-200 px-5 py-6 rounded-sm shadow-sm"
+                >
+                  {/* small amber dot + title */}
+                  <div className="flex items-center gap-2 mb-2">
+                    <span
+                      className="inline-block rounded-full flex-shrink-0"
+                      style={{
+                        width: "6px",
+                        height: "6px",
+                        backgroundColor: "#c9952a",
+                      }}
+                    />
+                    <h3 className="text-xs tracking-[0.16em] uppercase text-neutral-900">
+                      {title}
+                    </h3>
+                  </div>
+                  <p>{body}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>

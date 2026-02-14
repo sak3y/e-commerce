@@ -1,9 +1,9 @@
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import Gmap from "../components/gmap";
-import Hero from "../assets/images/brown-bakery-bg.png";
+import Hero from "../assets/images/hero.png";
 import { FaInstagram } from "react-icons/fa";
-import EmailForm from "../components/form";
+import EmailForm from "../features/contact/form";
 
 const Contact = () => {
   return (

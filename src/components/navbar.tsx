@@ -25,97 +25,148 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
       setIsAtTop(scrollTop <= 8);
-
       if (scrollTop < lastScrollTop) {
         setIsVisible(true);
       } else if (scrollTop > lastScrollTop && scrollTop > 50) {
         setIsVisible(false);
       }
-
       setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop);
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollTop]);
 
   return (
     <header
-      className={`fixed left-0 right-0 z-40 bg-white/95 backdrop-blur-md font-['Baloo_2',cursive] border-b border-neutral-200 transition-all duration-300 ease-in-out ${
-        isVisible ? (isAtTop && isLanding ? "top-[40px]" : "top-0") : "-top-full"
-      }`}
+      style={{
+        fontFamily: "'Lato', sans-serif",
+        background: "white",
+        borderBottom: "1px solid rgba(184,145,42,0.2)",
+        transition: "top 0.3s ease",
+        position: "fixed",
+        left: 0,
+        right: 0,
+        zIndex: 40,
+        top: isVisible ? (isAtTop && isLanding ? "40px" : "0px") : "-300px",
+      }}
     >
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="hidden md:flex items-center h-20">
-          <nav className="flex items-center gap-6 text-sm uppercase tracking-[0.12em] text-neutral-800 flex-1 justify-end pr-8">
-            {leftLinks.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className="pb-0.5 border-b-2 border-transparent hover:border-neutral-900 transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+      {/* ── Desktop ── */}
+      <div className="max-w-6xl mx-auto px-6 hidden md:flex items-center h-[68px]">
 
-          <Link to="/" className="flex-shrink-0 px-4 mx-4">
-            <span className="block text-2xl font-bold scale-y-110 text-neutral-900 uppercase">
+        {/* Left nav */}
+        <nav className="flex items-center gap-8 flex-1 justify-end pr-10">
+          {leftLinks.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              className="text-[11px] uppercase tracking-[0.18em] font-semibold transition-colors duration-200"
+              style={{ color: "rgba(1,1,1,0.72)" }}
+              onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#B8912A"}
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(1,1,1,0.72)"}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Centre wordmark */}
+        <Link to="/" className="flex-shrink-0 px-8">
+          <div className="text-center">
+            <span
+              className="block text-lg font-bold uppercase tracking-[0.22em] text-black"
+              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", letterSpacing: "0.22em" }}
+            >
+              Novelty
+            </span>
+         
+            <span
+              className="block text-[9px] uppercase tracking-[0.3em] mt-0.5"
+              style={{ color: "#B8912A", fontFamily: "'Lato', sans-serif" }}
+            >
+              Bakery
+            </span>
+          </div>
+        </Link>
+
+        {/* Right nav */}
+        <nav className="flex items-center gap-8 flex-1 justify-start pl-10">
+          {rightLinks.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              className="text-[11px] uppercase tracking-[0.18em] font-semibold transition-colors duration-200"
+              style={{ color: "rgba(1,1,1,0.72)" }}
+              onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#B8912A"}
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(1,1,1,0.72)"}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
+
+      {/* ── Mobile ── */}
+      <div className="md:hidden px-5">
+        <div className="flex items-center justify-between h-10 sm:h-14">
+          <Link to="/" className="flex items-center gap-2">
+            <span
+              className="text-xs sm:text-base font-bold uppercase tracking-[0.18em] text-black"
+              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+            >
               Novelty Bakery
             </span>
           </Link>
 
-          <nav className="flex items-center gap-6 text-sm uppercase tracking-[0.02em] text-neutral-800 flex-1 justify-start pl-8">
-            {rightLinks.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className="pb-0.5 border-b-2 border-transparent hover:border-neutral-900 transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-
-        {/* mobile */}
-        <div className="flex items-center justify-between h-16 md:hidden text-neutral-900">
-          <Link to="/" className="text-xl font-bold scale-y-110 uppercase">
-            Novelty Bakery
-          </Link>
+          {/* Hamburger */}
           <button
-            className={`p-1.5 transition-all duration-300 ${mobileMenuOpen ? "rotate-90" : ""}`}
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
+            className="flex flex-col gap-[5px] p-1.5"
           >
             <span
-              className={`block w-[18px] h-0.5 bg-neutral-900 transition-transform duration-300 ${mobileMenuOpen ? "translate-y-[6px] rotate-45 w-[18px]" : ""}`}
+              className="block h-px w-[20px] transition-all duration-300"
+              style={{
+                background: "#B8912A",
+                transform: mobileMenuOpen ? "translateY(6px) rotate(45deg)" : "none",
+              }}
             />
             <span
-              className={`block w-[18px] h-0.5 my-1 bg-neutral-900 transition-all duration-300 ${mobileMenuOpen ? "opacity-0" : ""}`}
+              className="block h-px w-[20px] transition-all duration-300"
+              style={{
+                background: "#B8912A",
+                opacity: mobileMenuOpen ? 0 : 1,
+              }}
             />
             <span
-              className={`block w-[18px] h-0.5 bg-neutral-900 transition-transform duration-300 ${mobileMenuOpen ? "-translate-y-[6px] -rotate-45 w-[18px]" : ""}`}
+              className="block h-px w-[20px] transition-all duration-300"
+              style={{
+                background: "#B8912A",
+                transform: mobileMenuOpen ? "translateY(-6px) rotate(-45deg)" : "none",
+              }}
             />
           </button>
         </div>
 
+        {/* Mobile menu */}
         {mobileMenuOpen && (
-          <nav className="md:hidden pb-2 text-sm uppercase tracking-[0.12em] text-neutral-900 border-t border-neutral-200">
-            <ul className="space-y-2">
-              {links.map((item) => (
-                <li
-                  key={item.to}
-                  className="overflow-hidden border-neutral-200 hover:bg-neutral-50"
-                >
+          <nav
+            className="pb-4"
+            style={{ borderTop: "1px solid rgba(184,145,42,0.2)" }}
+          >
+            <ul>
+              {links.map((item, i) => (
+                <li key={item.to} style={{ borderBottom: i < links.length - 1 ? "1px solid rgba(1,1,1,0.06)" : "none" }}>
                   <Link
                     to={item.to}
-                    className="block py-3"
                     onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-between py-3.5 text-[11px] uppercase tracking-[0.2em] font-semibold transition-colors duration-200"
+                    style={{ color: "rgba(1,1,1,0.7)" }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#B8912A"}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(1,1,1,0.7)"}
                   >
-                    {item.label}
+                    <span>{item.label}</span>
+                    <span style={{ color: "#B8912A", fontSize: "10px" }}>→</span>
                   </Link>
                 </li>
               ))}

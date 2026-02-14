@@ -1,112 +1,215 @@
-import { useState, useEffect } from "react";
-import testimonials from "../data/testimonials.json";
+import { useEffect, useRef, useState } from "react";
+
+const testimonials = [
+  {
+    name: "Sarah Mitchell",
+    location: "East Ham",
+    text: "The puff pastries here are absolutely divine. I stop by every morning on my way to work. The quality and freshness is unmatched in the area.",
+    rating: 5,
+  },
+  {
+    name: "Tariq Hussain",
+    location: "Forest Gate",
+    text: "Been coming here for over 20 years. The biscuits and rusks are exactly as I remember — fresh, crispy and you cannot stop at one.",
+    rating: 5,
+  },
+  {
+    name: "Priya Nair",
+    location: "Barking",
+    text: "Ordered a celebration cake and it was beautiful. They really care about every single thing they bake. The whole family loved it.",
+    rating: 5,
+  },
+  {
+    name: "Marcus O'Brien",
+    location: "Plaistow",
+    text: "Nothing beats popping in on a Saturday morning. The bread is always fresh out of the oven and the pastries are extraordinary.",
+    rating: 5,
+  },
+];
+
+const Star = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="#C8960C">
+    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+  </svg>
+);
 
 const TestimonialsSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const ref = useRef<HTMLElement>(null);
+  const [revealed, setRevealed] = useState(false);
+  const [active, setActive] = useState(0);
 
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    const observer = new IntersectionObserver(
+      (entries) => { if (entries[0].isIntersecting) { setRevealed(true); observer.disconnect(); } },
+      { threshold: 0.08 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
 
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 3 >= testimonials.length ? 0 : prev + 3));
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying]);
-
-  const handleDotClick = (index: number) => {
-    setCurrentIndex(index);
-    setIsAutoPlaying(false);
-  };
-
-  const visibleTestimonials = testimonials.slice(currentIndex, currentIndex + 3);
-  const totalSlides = Math.ceil(testimonials.length / 3);
-  const currentSlide = Math.floor(currentIndex / 3);
+  useEffect(() => {
+    const t = setInterval(() => setActive(a => (a + 1) % testimonials.length), 5500);
+    return () => clearInterval(t);
+  }, []);
 
   return (
-    <section className="bg-gradient-to-b from-white to-neutral-50 py-16 md:py-24 font-['Baloo_2',cursive]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 mb-4">
-            What Our Customers Say
-          </h2>
+    <section
+      ref={ref}
+      className="relative overflow-hidden py-20 md:py-28 bg-white"
+      style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+    >
+      {/* Red left edge bar — the creative red accent for this section */}
+      <div className="absolute top-0 left-0 bottom-0 w-[4px]" style={{ background: "#9B1C1C" }} />
 
-          <p className="text-base md:text-lg text-neutral-600 max-w-2xl mx-auto">
-            Don't just take our word for it - hear from our loyal customers who keep coming back for
-            more
+      {/* Gold top rule */}
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "rgba(200,150,12,0.25)" }} />
+
+      <div className="relative max-w-7xl mx-auto px-8 sm:px-12 lg:px-18">
+
+        {/* Header */}
+        <div
+          className="mb-16 text-center"
+          style={{
+            opacity: revealed ? 1 : 0,
+            transform: revealed ? "translateY(0)" : "translateY(22px)",
+            transition: "opacity 0.9s ease, transform 0.9s ease",
+          }}
+        >
+          <div className="flex items-center justify-center gap-3 mb-5">
+            <span className="block w-6 h-[2px]" style={{ background: "#C8960C" }} />
+            <p className="text-[10px] tracking-[0.3em] uppercase"
+              style={{ color: "#C8960C", fontFamily: "'Lato', sans-serif" }}>What People Say</p>
+            <span className="block w-6 h-[2px]" style={{ background: "#C8960C" }} />
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#111111] leading-tight">
+            Loved by the community
+          </h2>
+          <p className="mt-4 text-[15px] text-[#111111]/50 max-w-md mx-auto"
+            style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
+            Hear from our loyal customers who keep coming back for more
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          {visibleTestimonials.map((testimonial, index) => (
+        {/* Desktop grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {testimonials.map((t, i) => (
             <div
-              key={currentIndex + index}
-              className="bg-white rounded-xl p-8 shadow-lg border-2 border-[#D4AF37]/10 hover:border-[#D4AF37]/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animate-fadeIn"
-              style={{ animationDelay: `${index * 100}ms` }}
+              key={t.name}
+              className="relative bg-white p-7 transition-all duration-400 group"
+              style={{
+                opacity: revealed ? 1 : 0,
+                transform: revealed ? "translateY(0)" : "translateY(24px)",
+                transition: `opacity 0.8s ease ${i * 0.11}s, transform 0.8s ease ${i * 0.11}s`,
+                border: "1px solid rgba(17,17,17,0.09)",
+                boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 36px rgba(0,0,0,0.1)";
+                (e.currentTarget as HTMLElement).style.borderColor = "#C8960C";
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 12px rgba(0,0,0,0.05)";
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(17,17,17,0.09)";
+              }}
             >
-              {/* Stars */}
+              {/* Gold top border that grows on hover */}
+              <div
+                className="absolute top-0 left-0 h-[3px] transition-all duration-400"
+                style={{ background: "#C8960C", width: "0%" }}
+                ref={el => {
+                  if (!el) return;
+                  const card = el.closest("[data-card]") || el.parentElement;
+                  if (!card) return;
+                  card.addEventListener("mouseenter", () => el.style.width = "100%");
+                  card.addEventListener("mouseleave", () => el.style.width = "0%");
+                }}
+              />
+
               <div className="flex gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-[#D4AF37] fill-current" viewBox="0 0 20 20">
-                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                  </svg>
-                ))}
+                {Array.from({ length: t.rating }).map((_, j) => <Star key={j} />)}
               </div>
 
-              {/* Quote */}
-              <p className="text-neutral-700 text-base leading-relaxed mb-6 italic">
-                "{testimonial.text}"
+              <p className="text-[#111111]/72 leading-relaxed mb-6 text-[15px] italic font-light"
+                style={{ fontFamily: "'Lato', sans-serif" }}>
+                "{t.text}"
               </p>
 
-              {/* Customer Info */}
-              <div className="flex items-center gap-4 pt-4 border-t border-neutral-200">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#C4A037] flex items-center justify-center text-white font-bold text-lg">
-                  {testimonial.name.charAt(0)}
+              {/* Divider — red */}
+              <div className="mb-4 h-px" style={{ background: "rgba(155,28,28,0.15)" }} />
+
+              <div className="flex items-center gap-3">
+                {/* Avatar — black bg, gold initial */}
+                <div
+                  className="w-9 h-9 flex items-center justify-center text-sm font-bold flex-shrink-0"
+                  style={{
+                    background: "#111111",
+                    color: "#C8960C",
+                    fontFamily: "'Lato', sans-serif",
+                  }}
+                >
+                  {t.name[0]}
                 </div>
                 <div>
-                  <p className="font-bold text-neutral-900">{testimonial.name}</p>
-                  <p className="text-sm text-neutral-500">{testimonial.location}</p>
+                  <p className="text-[#111111] font-semibold text-[14px]"
+                    style={{ fontFamily: "'Lato', sans-serif" }}>{t.name}</p>
+                  <p className="text-[#111111]/40 text-[12px]"
+                    style={{ fontFamily: "'Lato', sans-serif" }}>{t.location}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Navigation Dots */}
-        <div className="flex justify-center items-center gap-3">
-          {[...Array(totalSlides)].map((_, index) => (
-            <button
-              key={index}
-              onClick={() => handleDotClick(index * 3)}
-              className={`transition-all duration-300 rounded-full ${
-                currentSlide === index
-                  ? "w-10 h-3 bg-[#D4AF37]"
-                  : "w-3 h-3 border-2 border-[#D4AF37] hover:bg-[#D4AF37]/30"
-              }`}
-              aria-label={`Go to testimonial set ${index + 1}`}
-            />
-          ))}
-        </div>
-      </div>
+        {/* Mobile — single card, auto advance */}
+        <div className="md:hidden">
+          <div
+            className="relative p-7 bg-white"
+            style={{
+              border: "1px solid rgba(17,17,17,0.09)",
+              borderLeft: "4px solid #C8960C",
+              boxShadow: "0 4px 20px rgba(0,0,0,0.07)",
+            }}
+          >
+            <div className="flex gap-1 mb-4">
+              {Array.from({ length: testimonials[active].rating }).map((_, j) => <Star key={j} />)}
+            </div>
+            <p className="text-[#111111]/70 leading-relaxed mb-6 text-[15px] italic font-light"
+              style={{ fontFamily: "'Lato', sans-serif" }}>
+              "{testimonials[active].text}"
+            </p>
+            <div className="mb-4 h-px" style={{ background: "rgba(155,28,28,0.15)" }} />
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 flex items-center justify-center text-sm font-bold"
+                style={{ background: "#111111", color: "#C8960C", fontFamily: "'Lato', sans-serif" }}>
+                {testimonials[active].name[0]}
+              </div>
+              <div>
+                <p className="text-[#111111] font-semibold text-[14px]"
+                  style={{ fontFamily: "'Lato', sans-serif" }}>{testimonials[active].name}</p>
+                <p className="text-[#111111]/40 text-[12px]"
+                  style={{ fontFamily: "'Lato', sans-serif" }}>{testimonials[active].location}</p>
+              </div>
+            </div>
+          </div>
 
-      <style>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.6s ease-out forwards;
-          opacity: 0;
-        }
-      `}</style>
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-6">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className="rounded-none transition-all duration-300"
+                style={{
+                  width: active === i ? "24px" : "8px",
+                  height: "3px",
+                  background: active === i ? "#C8960C" : "rgba(17,17,17,0.18)",
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+      </div>
     </section>
   );
 };

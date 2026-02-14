@@ -3,11 +3,6 @@
 	"compatibility_date": "2025-01-01",
 	"d1_databases": [
 		{
-			"binding": "DB",
-			"database_name": "novelty-bakery-db",
-			"database_id": "c38c7ed8-4976-471b-b2f9-e715d8ed0f36",
-		},
-		{
 			"binding": "novelty_bakery_db",
 			"database_name": "novelty-bakery-db",
 			"database_id": "c38c7ed8-4976-471b-b2f9-e715d8ed0f36",
