@@ -1,9 +1,11 @@
+// src/pages/contact.tsx
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import Gmap from "../components/gmap";
 import HeroImg from "../assets/images/shop-front.png";
 import { FaInstagram } from "react-icons/fa";
 import EmailForm from "../features/contact/form";
+import Banner from "../features/home/banner";
 
 const Contact = () => {
   return (
@@ -14,12 +16,14 @@ const Contact = () => {
       `}</style>
 
       <div className="min-h-screen bg-white text-[#111111] overflow-x-hidden">
-        <header className="sticky top-0 z-50 bg-[#111111]">
+        <header className="sticky top-0 z-50 bg-white">
           <Navbar />
+          <div className="bg-[#111111]">
+            <Banner />
+          </div>
         </header>
 
         <main>
-          {/* Hero */}
           <section className="relative overflow-hidden bg-[#111111]">
             <div className="relative h-[34vh] min-h-[260px] max-h-[360px] overflow-hidden">
               <img src={HeroImg} alt="Novelty Bakery" className="w-full h-full object-cover object-center scale-[1.06]" />
@@ -28,22 +32,24 @@ const Contact = () => {
 
             <div className="absolute inset-0 flex items-end pb-10 md:pb-12">
               <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full">
-                <p className="text-[10px] tracking-[0.34em] uppercase font-semibold mb-3" style={{ color: "#C8960C", fontFamily: "'Lato', sans-serif" }}>
+                <p className="text-[10px] tracking-[0.34em] uppercase font-semibold mb-3" style={{ color: "var(--nb-gold)", fontFamily: "'Lato', sans-serif" }}>
                   Contact
                 </p>
-                <h1 className="text-white font-bold leading-[0.95]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.6rem, 6vw, 4.2rem)" }}>
+                <h1
+                  className="text-white font-bold leading-[0.95]"
+                  style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.6rem, 6vw, 4.2rem)" }}
+                >
                   Visit us or message us
                 </h1>
               </div>
             </div>
           </section>
 
-          {/* Content */}
           <section className="border-b border-black/10">
             <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-12 md:py-16 grid gap-10 md:grid-cols-12">
               <div className="md:col-span-5">
                 <div className="rounded-2xl border border-black/10 bg-white shadow-sm p-7">
-                  <p className="text-[10px] tracking-[0.3em] uppercase font-semibold mb-4" style={{ color: "#C8960C", fontFamily: "'Lato', sans-serif" }}>
+                  <p className="text-[10px] tracking-[0.3em] uppercase font-semibold mb-4" style={{ color: "var(--nb-gold)", fontFamily: "'Lato', sans-serif" }}>
                     Details
                   </p>
 
@@ -87,13 +93,13 @@ const Contact = () => {
                     </a>
                   </div>
 
-                  <div className="mt-8 h-[2px] w-16" style={{ background: "rgba(200,150,12,0.55)" }} />
+                  <div className="mt-8 h-[2px] w-16" style={{ background: "rgba(176,141,87,0.55)" }} />
                 </div>
               </div>
 
               <div className="md:col-span-7">
                 <div className="rounded-2xl border border-black/10 bg-white shadow-sm p-7 md:p-9">
-                  <p className="text-[10px] tracking-[0.3em] uppercase font-semibold mb-4" style={{ color: "#C8960C", fontFamily: "'Lato', sans-serif" }}>
+                  <p className="text-[10px] tracking-[0.3em] uppercase font-semibold mb-4" style={{ color: "var(--nb-gold)", fontFamily: "'Lato', sans-serif" }}>
                     Send a message
                   </p>
                   <EmailForm />
