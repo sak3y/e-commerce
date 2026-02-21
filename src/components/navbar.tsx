@@ -17,9 +17,6 @@ export default function Navbar() {
 
   const isActive = (to: string) => (to === "/" ? pathname === "/" : pathname.startsWith(to));
 
-  // close menu on route change
-  useEffect(() => setOpen(false), [pathname]);
-
   // lock background scroll when menu open (mobile)
   useEffect(() => {
     if (!open) return;
@@ -29,6 +26,8 @@ export default function Navbar() {
       document.body.style.overflow = prev;
     };
   }, [open]);
+
+  const closeMenu = () => setOpen(false);
 
   return (
     <div
@@ -59,7 +58,10 @@ export default function Navbar() {
             <div className="nb-serif text-[19px] font-bold tracking-[0.18em] uppercase text-black">
               Novelty
             </div>
-            <div className="nb-sans text-[9px] uppercase tracking-[0.34em]" style={{ color: "var(--nb-gold)" }}>
+            <div
+              className="nb-sans text-[9px] uppercase tracking-[0.34em]"
+              style={{ color: "var(--nb-gold)" }}
+            >
               Bakery
             </div>
           </Link>
@@ -121,7 +123,7 @@ export default function Navbar() {
             type="button"
             aria-label="Close menu"
             className="absolute inset-0 w-full h-full"
-            onClick={() => setOpen(false)}
+            onClick={closeMenu}
             style={{ background: "rgba(0,0,0,0.35)" }}
           />
 
@@ -143,7 +145,7 @@ export default function Navbar() {
                   type="button"
                   className="h-10 w-10 grid place-items-center"
                   aria-label="Close menu"
-                  onClick={() => setOpen(false)}
+                  onClick={closeMenu}
                 >
                   <span className="text-2xl leading-none" style={{ color: "var(--nb-black)" }}>
                     ×
@@ -159,6 +161,7 @@ export default function Navbar() {
                       <li key={l.to}>
                         <Link
                           to={l.to}
+                          onClick={closeMenu}
                           className="flex items-center justify-between rounded-xl px-3 py-3"
                           style={{
                             background: active ? "rgba(176,141,87,0.10)" : "transparent",
@@ -181,8 +184,10 @@ export default function Navbar() {
 
                 <div className="mt-4 h-px w-full" style={{ background: "var(--nb-border)" }} />
 
-                {/* subtle brochure note */}
-                <p className="mt-4 nb-sans text-[12px] leading-relaxed" style={{ color: "rgba(17,17,17,0.60)" }}>
+                <p
+                  className="mt-4 nb-sans text-[12px] leading-relaxed"
+                  style={{ color: "rgba(17,17,17,0.60)" }}
+                >
                   Visit us on High Street North for fresh bakes daily.
                 </p>
               </nav>

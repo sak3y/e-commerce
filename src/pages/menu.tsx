@@ -6,6 +6,11 @@ import { menu } from "../data/menu";
 const Menu = () => {
   return (
     <div className="min-h-screen bg-white text-[var(--nb-black)]">
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Lato:wght@300;400;600;700&display=swap');
+        *, *::before, *::after { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+      `}</style>
+
       {/* Header stack */}
       <header className="sticky top-0 z-50 bg-white">
         <Navbar />
@@ -39,7 +44,8 @@ const Menu = () => {
               className="nb-sans mt-5 leading-[1.9]"
               style={{ color: "var(--nb-text)", maxWidth: 560 }}
             >
-              A sample of what you’ll usually find at the counter. Items vary by season & availability.
+              A sample of what you’ll usually find at the counter. Items vary by season &
+              availability.
             </p>
 
             <div className="mt-8 h-px w-24" style={{ background: "var(--nb-border)" }} />
@@ -69,7 +75,10 @@ const Menu = () => {
                     <h2 className="nb-serif text-2xl font-bold mb-2">{cat.title}</h2>
 
                     {cat.intro && (
-                      <p className="nb-sans text-[13px] leading-[1.75] mb-5" style={{ color: "var(--nb-text)" }}>
+                      <p
+                        className="nb-sans text-[13px] leading-[1.75] mb-5"
+                        style={{ color: "var(--nb-text)" }}
+                      >
                         {cat.intro}
                       </p>
                     )}
@@ -84,7 +93,10 @@ const Menu = () => {
                               {item.name}
                             </p>
                             {item.description && (
-                              <p className="nb-sans text-[12px] leading-[1.6] mt-1" style={{ color: "rgba(17,17,17,0.60)" }}>
+                              <p
+                                className="nb-sans text-[12px] leading-[1.6] mt-1"
+                                style={{ color: "rgba(17,17,17,0.60)" }}
+                              >
                                 {item.description}
                               </p>
                             )}
