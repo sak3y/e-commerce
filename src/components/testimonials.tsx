@@ -40,33 +40,36 @@ const TestimonialsSection = () => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => { if (entries[0].isIntersecting) { setRevealed(true); observer.disconnect(); } },
-      { threshold: 0.08 }
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setRevealed(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.08 },
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
-    const t = setInterval(() => setActive(a => (a + 1) % testimonials.length), 5500);
+    const t = setInterval(() => setActive((a) => (a + 1) % testimonials.length), 5500);
     return () => clearInterval(t);
   }, []);
 
   return (
-    <section
-      ref={ref}
-      className="relative overflow-hidden py-20 md:py-28 bg-white"
-      style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-    >
-      {/* Red left edge bar — the creative red accent for this section */}
-      <div className="absolute top-0 left-0 bottom-0 w-[4px]" style={{ background: "#9B1C1C" }} />
+    <section ref={ref} className="relative overflow-hidden py-20 md:py-28 bg-white">
+      {/* optional red accent */}
+      <div
+        className="absolute top-0 left-0 bottom-0 w-[4px]"
+        style={{ background: "rgba(155,28,28,0.85)" }}
+      />
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{ background: "rgba(200,150,12,0.25)" }}
+      />
 
-      {/* Gold top rule */}
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "rgba(200,150,12,0.25)" }} />
-
-      <div className="relative max-w-7xl mx-auto px-8 sm:px-12 lg:px-18">
-
-        {/* Header */}
+      <div className="relative max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
         <div
           className="mb-16 text-center"
           style={{
@@ -77,25 +80,36 @@ const TestimonialsSection = () => {
         >
           <div className="flex items-center justify-center gap-3 mb-5">
             <span className="block w-6 h-[2px]" style={{ background: "#C8960C" }} />
-            <p className="text-[10px] tracking-[0.3em] uppercase"
-              style={{ color: "#C8960C", fontFamily: "'Lato', sans-serif" }}>What People Say</p>
+            <p
+              className="text-[10px] tracking-[0.3em] uppercase"
+              style={{ color: "#C8960C", fontFamily: "'Lato', sans-serif" }}
+            >
+              What People Say
+            </p>
             <span className="block w-6 h-[2px]" style={{ background: "#C8960C" }} />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#111111] leading-tight">
+
+          <h2
+            className="text-4xl md:text-5xl font-bold text-[#111111] leading-tight"
+            style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+          >
             Loved by the community
           </h2>
-          <p className="mt-4 text-[15px] text-[#111111]/50 max-w-md mx-auto"
-            style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
+
+          <p
+            className="mt-4 text-[15px] text-[#111111]/50 max-w-md mx-auto"
+            style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
+          >
             Hear from our loyal customers who keep coming back for more
           </p>
         </div>
 
-        {/* Desktop grid */}
+        {/* Desktop */}
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {testimonials.map((t, i) => (
             <div
               key={t.name}
-              className="relative bg-white p-7 transition-all duration-400 group"
+              className="group relative bg-white p-7"
               style={{
                 opacity: revealed ? 1 : 0,
                 transform: revealed ? "translateY(0)" : "translateY(24px)",
@@ -103,42 +117,29 @@ const TestimonialsSection = () => {
                 border: "1px solid rgba(17,17,17,0.09)",
                 boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
               }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 36px rgba(0,0,0,0.1)";
-                (e.currentTarget as HTMLElement).style.borderColor = "#C8960C";
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 12px rgba(0,0,0,0.05)";
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(17,17,17,0.09)";
-              }}
             >
-              {/* Gold top border that grows on hover */}
+              {/* top gold bar */}
               <div
-                className="absolute top-0 left-0 h-[3px] transition-all duration-400"
-                style={{ background: "#C8960C", width: "0%" }}
-                ref={el => {
-                  if (!el) return;
-                  const card = el.closest("[data-card]") || el.parentElement;
-                  if (!card) return;
-                  card.addEventListener("mouseenter", () => el.style.width = "100%");
-                  card.addEventListener("mouseleave", () => el.style.width = "0%");
-                }}
+                className="absolute top-0 left-0 h-[3px] w-0 group-hover:w-full transition-all duration-300"
+                style={{ background: "#C8960C" }}
               />
 
               <div className="flex gap-1 mb-4">
-                {Array.from({ length: t.rating }).map((_, j) => <Star key={j} />)}
+                {Array.from({ length: t.rating }).map((_, j) => (
+                  <Star key={j} />
+                ))}
               </div>
 
-              <p className="text-[#111111]/72 leading-relaxed mb-6 text-[15px] italic font-light"
-                style={{ fontFamily: "'Lato', sans-serif" }}>
+              <p
+                className="text-[#111111]/72 leading-relaxed mb-6 text-[15px] italic font-light"
+                style={{ fontFamily: "'Lato', sans-serif" }}
+              >
                 "{t.text}"
               </p>
 
-              {/* Divider — red */}
               <div className="mb-4 h-px" style={{ background: "rgba(155,28,28,0.15)" }} />
 
               <div className="flex items-center gap-3">
-                {/* Avatar — black bg, gold initial */}
                 <div
                   className="w-9 h-9 flex items-center justify-center text-sm font-bold flex-shrink-0"
                   style={{
@@ -150,17 +151,25 @@ const TestimonialsSection = () => {
                   {t.name[0]}
                 </div>
                 <div>
-                  <p className="text-[#111111] font-semibold text-[14px]"
-                    style={{ fontFamily: "'Lato', sans-serif" }}>{t.name}</p>
-                  <p className="text-[#111111]/40 text-[12px]"
-                    style={{ fontFamily: "'Lato', sans-serif" }}>{t.location}</p>
+                  <p
+                    className="text-[#111111] font-semibold text-[14px]"
+                    style={{ fontFamily: "'Lato', sans-serif" }}
+                  >
+                    {t.name}
+                  </p>
+                  <p
+                    className="text-[#111111]/40 text-[12px]"
+                    style={{ fontFamily: "'Lato', sans-serif" }}
+                  >
+                    {t.location}
+                  </p>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Mobile — single card, auto advance */}
+        {/* Mobile */}
         <div className="md:hidden">
           <div
             className="relative p-7 bg-white"
@@ -171,28 +180,45 @@ const TestimonialsSection = () => {
             }}
           >
             <div className="flex gap-1 mb-4">
-              {Array.from({ length: testimonials[active].rating }).map((_, j) => <Star key={j} />)}
+              {Array.from({ length: testimonials[active].rating }).map((_, j) => (
+                <Star key={j} />
+              ))}
             </div>
-            <p className="text-[#111111]/70 leading-relaxed mb-6 text-[15px] italic font-light"
-              style={{ fontFamily: "'Lato', sans-serif" }}>
+            <p
+              className="text-[#111111]/70 leading-relaxed mb-6 text-[15px] italic font-light"
+              style={{ fontFamily: "'Lato', sans-serif" }}
+            >
               "{testimonials[active].text}"
             </p>
             <div className="mb-4 h-px" style={{ background: "rgba(155,28,28,0.15)" }} />
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 flex items-center justify-center text-sm font-bold"
-                style={{ background: "#111111", color: "#C8960C", fontFamily: "'Lato', sans-serif" }}>
+              <div
+                className="w-9 h-9 flex items-center justify-center text-sm font-bold"
+                style={{
+                  background: "#111111",
+                  color: "#C8960C",
+                  fontFamily: "'Lato', sans-serif",
+                }}
+              >
                 {testimonials[active].name[0]}
               </div>
               <div>
-                <p className="text-[#111111] font-semibold text-[14px]"
-                  style={{ fontFamily: "'Lato', sans-serif" }}>{testimonials[active].name}</p>
-                <p className="text-[#111111]/40 text-[12px]"
-                  style={{ fontFamily: "'Lato', sans-serif" }}>{testimonials[active].location}</p>
+                <p
+                  className="text-[#111111] font-semibold text-[14px]"
+                  style={{ fontFamily: "'Lato', sans-serif" }}
+                >
+                  {testimonials[active].name}
+                </p>
+                <p
+                  className="text-[#111111]/40 text-[12px]"
+                  style={{ fontFamily: "'Lato', sans-serif" }}
+                >
+                  {testimonials[active].location}
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Dots */}
           <div className="flex justify-center gap-2 mt-6">
             {testimonials.map((_, i) => (
               <button
@@ -208,7 +234,6 @@ const TestimonialsSection = () => {
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );

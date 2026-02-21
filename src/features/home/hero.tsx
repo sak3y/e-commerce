@@ -1,159 +1,155 @@
 import { Link } from "react-router-dom";
-import heroImg from "../../assets/images/hero.png";
-import { useEffect, useRef } from "react";
 
-// Hero renders ONLY the hero section. AboutCard is separate in home.tsx.
+import HeroImg from "../../assets/images/hero.png";
+const GOLD = "#B08D57";
+const BLACK = "#111111";
 
-const Hero = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const els = sectionRef.current?.querySelectorAll("[data-reveal]");
-    els?.forEach((el, i) => {
-      const h = el as HTMLElement;
-      h.style.opacity = "0";
-      h.style.transform = "translateY(28px)";
-      h.style.transition = `opacity 0.9s ease ${i * 0.13}s, transform 0.9s ease ${i * 0.13}s`;
-      requestAnimationFrame(() =>
-        requestAnimationFrame(() => {
-          h.style.opacity = "1";
-          h.style.transform = "translateY(0)";
-        })
-      );
-    });
-
-    const onScroll = () => {
-      const img = sectionRef.current?.querySelector(".nb-hero-img") as HTMLElement;
-      if (img) img.style.transform = `translateY(${window.scrollY * 0.22}px) scale(1.1)`;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
+export default function Hero() {
   return (
-    <section ref={sectionRef} className="relative overflow-hidden" style={{ background: "#111111" }}>
-
-      {/* Full-bleed image with parallax */}
-      <div className="relative h-[90vh] min-h-[580px] max-h-[860px] overflow-hidden">
+    <section className="relative overflow-hidden" style={{ background: BLACK }}>
+      {/* Background image */}
+      <div className="absolute inset-0">
         <img
-          src={heroImg}
-          alt="Freshly baked goods at Novelty Bakery"
-          className="nb-hero-img w-full h-full object-cover object-center scale-[1.1] will-change-transform"
+          src={HeroImg}
+          alt="Novelty Bakery"
+          className="h-full w-full object-cover object-center"
+          loading="eager"
         />
-        {/* Dark gradient — pure black, no brown */}
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #111111 0%, rgba(17,17,17,0.5) 40%, transparent 100%)" }} />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(17,17,17,0.85) 0%, rgba(17,17,17,0.2) 60%, transparent 100%)" }} />
 
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(17,17,17,0.35) 0%, rgba(17,17,17,0.65) 55%, rgba(17,17,17,0.92) 100%)",
+          }}
+        />
       </div>
 
-      {/* Content — anchored bottom left over image */}
-      <div className="absolute inset-0 flex flex-col justify-end pb-16 md:pb-22 lg:pb-28">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full">
-          <div className="max-w-3xl">
+      {/* Content */}
+      <div className="relative">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          {/* Push content UP (not bottom) */}
+          <div className="pt-16 sm:pt-20 md:pt-24 pb-14 md:pb-18">
+            <div className="max-w-2xl">
+              {/* Eyebrow */}
+              <div className="flex items-center gap-3 mb-5">
+                <span
+                  className="block w-8 h-[1px]"
+                  style={{ background: "rgba(255,255,255,0.35)" }}
+                />
+                <p
+                  className="text-[10px] sm:text-[11px] uppercase tracking-[0.28em] font-semibold"
+                  style={{ color: `rgba(255,255,255,0.72)`, fontFamily: "'Lato', sans-serif" }}
+                >
+                  East Ham • Est. 1985
+                </p>
+              </div>
 
-            {/* Eyebrow */}
-            <div data-reveal className="flex items-center gap-3 mb-6">
-              <span className="inline-block w-8 h-[2px]" style={{ background: "#B8912A" }} />
-              <p className="text-[10px] tracking-[0.34em] uppercase font-semibold"
-                style={{ color: "#B8912A", fontFamily: "'Lato', sans-serif" }}>
-                High Street North, East Ham · Est. 1985
+              {/* Headline */}
+              <h1
+                className="font-bold leading-[0.95] text-white"
+                style={{
+                  fontFamily: "'Cormorant Garamond', Georgia, serif",
+                  fontSize: "clamp(2.6rem, 5.6vw, 4.6rem)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                A neighbourhood bakery
+                <br />
+                <span style={{ color: GOLD }}>baked fresh daily</span>
+              </h1>
+
+              {/* Subtext */}
+              <p
+                className="mt-5 leading-[1.9]"
+                style={{
+                  fontFamily: "'Lato', sans-serif",
+                  color: "rgba(255,255,255,0.76)",
+                  fontSize: "clamp(0.98rem, 1.7vw, 1.08rem)",
+                  maxWidth: 540,
+                }}
+              >
+                Puff pastry, fresh bread, biscuits and savoury snacks — made in limited batches on
+                High Street North.
               </p>
-            </div>
 
-            {/* Main heading — very large, high contrast white */}
-            <h1
-              data-reveal
-              className="font-bold text-white leading-[0.87] tracking-[-0.025em] mb-7"
-              style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontSize: "clamp(4.2rem, 11vw, 9rem)",
-                textShadow: "0 2px 50px rgba(0,0,0,0.8), 0 0 80px rgba(0,0,0,0.4)",
-              }}
-            >
-              Novelty
-              <br />
-              <span style={{
-                color: "#B8912A",
-                textShadow: "0 4px 30px rgba(184,145,42,0.5)",
-              }}>
-                Bakery
-              </span>
-            </h1>
+              {/* Buttons */}
+              <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Link to="/menu" className="w-full sm:w-auto">
+                  <button
+                    className="w-full sm:w-auto h-11 px-6 rounded-xl text-[11px] uppercase tracking-[0.22em] font-semibold transition-colors"
+                    style={{
+                      fontFamily: "'Lato', sans-serif",
+                      background: GOLD,
+                      color: BLACK,
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = "#C2A15F")}
+                    onMouseLeave={(e) => (e.currentTarget.style.background = GOLD)}
+                  >
+                    View menu
+                  </button>
+                </Link>
 
-            {/* Subtext */}
-            <p
-              data-reveal
-              className="mb-10 max-w-[420px] leading-[1.75] font-light"
-              style={{
-                color: "rgba(255,255,255,0.78)",
-                fontFamily: "'Lato', sans-serif",
-                fontSize: "clamp(0.9rem, 1.8vw, 1.05rem)",
-              }}
-            >
-              Puff pastries, fresh bread, cakes and everyday treats — baked on the premises every single day.
-            </p>
+                <Link to="/contact" className="w-full sm:w-auto">
+                  <button
+                    className="w-full sm:w-auto h-11 px-6 rounded-xl text-[11px] uppercase tracking-[0.22em] font-semibold border transition-colors"
+                    style={{
+                      fontFamily: "'Lato', sans-serif",
+                      borderColor: "rgba(255,255,255,0.28)",
+                      color: "rgba(255,255,255,0.82)",
+                      background: "rgba(17,17,17,0.10)",
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.background = "rgba(255,255,255,0.06)")
+                    }
+                    onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(17,17,17,0.10)")}
+                  >
+                    Contact & hours
+                  </button>
+                </Link>
+              </div>
 
-            {/* CTAs */}
-            <div data-reveal className="flex flex-wrap gap-4 items-center">
-
-              {/* Primary: gold bg, black text */}
-              <Link to="/menu">
-                <button
-                  className="group relative overflow-hidden text-xs font-bold uppercase tracking-[0.24em] px-9 py-4 transition-all duration-300"
-                  style={{
-                    fontFamily: "'Lato', sans-serif",
-                    background: "#B8912A",
-                    color: "#111111",
-                  }}
-                  onMouseEnter={e => {
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 30px rgba(184,145,42,0.5)";
-                  }}
-                  onMouseLeave={e => {
-                    (e.currentTarget as HTMLElement).style.boxShadow = "none";
-                  }}
-                >
-                  <span className="relative z-10">View Menu</span>
-                  <span className="absolute inset-0 bg-white/20 -translate-x-full skew-x-12 group-hover:translate-x-full transition-transform duration-500" />
-                </button>
-              </Link>
-
-              {/* Secondary: text link */}
-              <Link to="/about">
-                <button
-                  className="group flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] transition-colors duration-300"
-                  style={{ fontFamily: "'Lato', sans-serif", color: "rgba(255,255,255,0.72)" }}
-                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#B8912A"}
-                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.72)"}
-                >
-                  <span>Our Story</span>
-                  <span className="block w-6 h-px bg-current transition-all duration-300 group-hover:w-10" />
-                </button>
-              </Link>
-
+              {/* Small trust strip (brochure style, not loud) */}
+              <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-xl">
+                {[
+                  { k: "Fresh", v: "Daily bakes" },
+                  { k: "Local", v: "High Street North" },
+                  { k: "Since", v: "1985" },
+                ].map((x) => (
+                  <div
+                    key={x.k}
+                    className="rounded-xl px-4 py-3"
+                    style={{
+                      border: "1px solid rgba(255,255,255,0.12)",
+                      background: "rgba(17,17,17,0.22)",
+                      backdropFilter: "blur(6px)",
+                    }}
+                  >
+                    <p
+                      className="text-[10px] uppercase tracking-[0.26em] font-semibold"
+                      style={{ fontFamily: "'Lato', sans-serif", color: "rgba(255,255,255,0.62)" }}
+                    >
+                      {x.k}
+                    </p>
+                    <p
+                      className="mt-1 text-[13px] font-semibold"
+                      style={{ fontFamily: "'Lato', sans-serif", color: "rgba(255,255,255,0.88)" }}
+                    >
+                      {x.v}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Scroll cue */}
-      <div className="absolute bottom-8 right-8 hidden md:flex flex-col items-center gap-2">
-        <p className="text-[9px] tracking-[0.3em] uppercase rotate-90 mb-1"
-          style={{ color: "rgba(255,255,255,0.22)", fontFamily: "'Lato', sans-serif" }}>Scroll</p>
-        <div className="w-px h-14 relative overflow-hidden" style={{ background: "rgba(255,255,255,0.1)" }}>
-          <div className="absolute top-0 left-0 right-0 h-1/2 animate-nb-scrolldrop" style={{ background: "#B8912A" }} />
-        </div>
+        {/* subtle bottom divider */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-px"
+          style={{ background: "rgba(255,255,255,0.10)" }}
+        />
       </div>
-
-      <style>{`
-        @keyframes nb-scrolldrop {
-          0%   { transform: translateY(-100%); opacity: 1; }
-          80%  { opacity: 1; }
-          100% { transform: translateY(260%); opacity: 0; }
-        }
-        .animate-nb-scrolldrop { animation: nb-scrolldrop 2.2s ease-in-out infinite; }
-      `}</style>
     </section>
   );
-};
-
-export default Hero;
+}

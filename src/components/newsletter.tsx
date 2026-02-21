@@ -3,71 +3,84 @@ import React, { useState } from "react";
 const Newsletter: React.FC = () => {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [message, setMessage] = useState("");
 
-  const validateEmail = (value: string) => /\S+@\S+\.\S+/.test(value); // regex func
+  const validateEmail = (value: string) => /\S+@\S+\.\S+/.test(value);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorMessage("");
+    setMessage("");
 
-    // handle invalid emails
     if (!validateEmail(email)) {
       setStatus("error");
-      setErrorMessage("Please enter a valid email address.");
+      setMessage("Please enter a valid email address.");
       return;
     }
 
-    const body = { email };
+    try {
+      setStatus("submitting");
 
-    // POST method
-    const res = await fetch("/api/newsletter", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
 
-    // Res update for user
-    if (res.ok) setErrorMessage("Subscribed!");
-    else {
-      setErrorMessage("Couldn't subscribe at this time.");
+      if (res.ok) {
+        setStatus("success");
+        setMessage("Subscribed!");
+        setEmail("");
+      } else {
+        setStatus("error");
+        setMessage("Couldn't subscribe at this time.");
+      }
+    } catch {
+      setStatus("error");
+      setMessage("Couldn't subscribe at this time.");
     }
   };
 
   return (
-    <div className="text-center md:text-left">
-      <p className="mb-3 flex justify-center leading-relaxed text-neutral-800 text-center md:text-left">
-        Join our newsletter.
-      </p>
+    <div className="text-center md:text-left" style={{ fontFamily: "'Lato', sans-serif" }}>
+      <p className="mb-3 leading-relaxed text-white/80">Join our newsletter.</p>
 
       <form
         onSubmit={handleSubmit}
         noValidate
-        className="inline-flex w-full max-w-xs overflow-hidden border border-neutral-300 bg-white"
+        className="inline-flex w-full max-w-xs overflow-hidden border border-white/15 bg-white"
       >
         <input
           type="email"
           placeholder="email address"
-          className="flex-1 px-3 py-2 text-[12px] text-neutral-800 placeholder:text-neutral-400 focus:outline-none"
+          className="flex-1 px-3 py-2 text-[12px] text-neutral-900 placeholder:text-neutral-400 focus:outline-none"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           disabled={status === "submitting"}
         />
         <button
           type="submit"
-          className="px-4 py-2 text-[11px] uppercase tracking-[0.18em] text-white bg-[#D4AF37] hover:bg-[#e3c45a] transition-colors disabled:opacity-60"
+          className="px-4 py-2 text-[11px] uppercase tracking-[0.18em] text-[#111111] transition-colors disabled:opacity-60"
+          style={{ background: "#C8960C" }}
           disabled={status === "submitting"}
         >
           {status === "submitting" ? "..." : "Go"}
         </button>
       </form>
 
-      {status === "error" && <p className="mt-2 text-[11px] text-red-600">{errorMessage}</p>}
-
-      {status === "success" && (
-        <p className="mt-2 text-[11px] text-center text-green-700">Subscribed!</p>
+      {status !== "idle" && (
+        <p
+          className="mt-2 text-[11px]"
+          style={{
+            color:
+              status === "success"
+                ? "rgba(200,150,12,0.95)"
+                : status === "error"
+                  ? "#ef4444"
+                  : "rgba(255,255,255,0.65)",
+          }}
+        >
+          {message}
+        </p>
       )}
     </div>
   );

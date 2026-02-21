@@ -1,5 +1,81 @@
 @import "tailwindcss";
 
+:root {
+  --nb-black: #111111;
+  --nb-white: #ffffff;
+
+  /* Warmer, more premium gold */
+  --nb-gold: #b08d57;
+  --nb-gold-hover: #c2a15f;
+
+  --nb-text: rgba(17, 17, 17, 0.72);
+  --nb-border: rgba(17, 17, 17, 0.08);
+}
+
+/* Typography */
+.nb-serif {
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.nb-sans {
+  font-family: "Lato", sans-serif;
+}
+
+/* Nav link style */
+.nb-nav-link {
+  @apply relative text-[11px] uppercase tracking-[0.18em] font-semibold transition-colors duration-200;
+  color: var(--nb-text);
+}
+
+.nb-nav-link-active {
+  color: var(--nb-black);
+}
+
+.nb-nav-underline {
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 0%;
+  background: var(--nb-gold);
+  transition: width 0.2s ease;
+}
+
+.nb-nav-link-active .nb-nav-underline {
+  width: 100%;
+}
+
+/* Buttons */
+.nb-btn-primary {
+  height: 44px;
+  padding: 0 24px;
+  border-radius: 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  background: var(--nb-gold);
+  color: var(--nb-black);
+  transition: background 0.2s ease;
+}
+
+.nb-btn-primary:hover {
+  background: var(--nb-gold-hover);
+}
+
+.nb-btn-secondary {
+  height: 44px;
+  padding: 0 24px;
+  border-radius: 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  border: 1px solid var(--nb-border);
+  color: var(--nb-black);
+  background: transparent;
+}
+
 button {
   cursor: pointer;
 }

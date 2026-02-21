@@ -11,7 +11,7 @@ const AboutCard = () => {
         if (entries[0].isIntersecting) {
           ref.current?.querySelectorAll("[data-reveal]").forEach((el, i) => {
             const h = el as HTMLElement;
-            h.style.transition = `opacity 0.9s ease ${i * 0.14}s, transform 0.9s ease ${i * 0.14}s`;
+            h.style.transition = `opacity 0.9s ease ${i * 0.12}s, transform 0.9s ease ${i * 0.12}s`;
             h.style.opacity = "1";
             h.style.transform = "translateY(0)";
           });
@@ -20,132 +20,131 @@ const AboutCard = () => {
       },
       { threshold: 0.12 },
     );
+
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section
-      ref={ref}
-      className="relative overflow-hidden"
-      style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-    >
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 min-h-[600px] md:min-h-[660px]">
-          {/* ── Image column ── */}
+    <section ref={ref} className="relative mt-10 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div
+          className="grid md:grid-cols-2 overflow-hidden"
+          style={{
+            border: "1px solid var(--nb-border)",
+            background: "var(--nb-white)",
+          }}
+        >
+          {/* Image */}
           <div
             data-reveal
-            className="relative overflow-hidden min-h-[320px]"
-            style={{ opacity: 0, transform: "translateY(28px)" }}
+            className="relative min-h-[280px] md:min-h-[520px] overflow-hidden"
+            style={{ opacity: 0, transform: "translateY(18px)" }}
           >
             <img
               src={heroBg}
               loading="lazy"
               alt="Novelty Bakery baked goods"
-              className="w-full h-full object-cover object-center min-h-full transition-transform duration-700 hover:scale-[1.04]"
+              className="w-full h-full object-cover object-center"
             />
-            {/* Light overlay to keep image readable */}
-            <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.18)" }} />
 
-            {/* Year badge — black bg, gold text, red top border */}
+            {/* subtle dark overlay for readability (not flashy) */}
             <div
-              className="absolute bottom-8 left-8 px-5 py-4 text-center"
+              className="absolute inset-0"
               style={{
-                background: "#111111",
+                background:
+                  "linear-gradient(to bottom, rgba(17,17,17,0.05) 0%, rgba(17,17,17,0.28) 100%)",
+              }}
+            />
+
+            {/* Est. badge (simple, clean) */}
+            <div
+              className="absolute bottom-6 left-6 px-4 py-3 text-left"
+              style={{
+                background: "rgba(17,17,17,0.78)",
+                border: "1px solid rgba(255,255,255,0.12)",
+                backdropFilter: "blur(6px)",
               }}
             >
               <p
-                className="text-[9px] tracking-[0.26em] uppercase mb-0.5"
-                style={{ color: "rgba(200,150,12,0.65)", fontFamily: "'Lato', sans-serif" }}
+                className="nb-sans text-[9px] uppercase tracking-[0.26em] font-semibold"
+                style={{ color: "rgba(255,255,255,0.70)" }}
               >
                 Est.
               </p>
-              <p className="text-3xl font-bold" style={{ color: "#C8960C" }}>
+              <p className="nb-serif text-2xl font-bold" style={{ color: "var(--nb-gold)" }}>
                 1985
               </p>
             </div>
           </div>
 
-          {/* ── Content column — black panel ── */}
-          <div className="flex items-center px-10 sm:px-14 py-16 md:py-20">
-            <div className="max-w-md w-full">
-              {/* Eyebrow */}
+          {/* Content */}
+          <div
+            className="relative flex items-center"
+            style={{
+              background: "var(--nb-black)",
+              color: "white",
+            }}
+          >
+            <div className="w-full px-8 sm:px-10 md:px-12 py-12 md:py-14">
+              {/* eyebrow */}
               <div
                 data-reveal
-                className="flex items-center gap-3 mb-6"
-                style={{ opacity: 0, transform: "translateY(18px)" }}
+                className="flex items-center gap-3 mb-5"
+                style={{ opacity: 0, transform: "translateY(14px)" }}
               >
-                <span className="block w-6 h-[2px]" style={{ background: "#C8960C" }} />
+                <span className="block w-7 h-px" style={{ background: "rgba(255,255,255,0.25)" }} />
                 <p
-                  className="text-[10px] tracking-[0.28em] uppercase"
-                  style={{ color: "#C8960C", fontFamily: "'Lato', sans-serif" }}
+                  className="nb-sans text-[10px] uppercase tracking-[0.28em] font-semibold"
+                  style={{ color: "rgba(255,255,255,0.72)" }}
                 >
-                  About Us
+                  About
                 </p>
               </div>
 
-              {/* Heading */}
               <h2
                 data-reveal
-                className="text-4xl md:text-5xl font-bold text-black leading-tight mb-8"
-                style={{ opacity: 0, transform: "translateY(18px)" }}
+                className="nb-serif font-bold leading-[0.98] mb-5"
+                style={{
+                  opacity: 0,
+                  transform: "translateY(14px)",
+                  fontSize: "clamp(2.1rem, 3.6vw, 3.1rem)",
+                }}
               >
-                Baked with care,
+                Fresh, not fussy.
                 <br />
-                <span className="italic" style={{ color: "#C8960C" }}>
-                  served with pride
-                </span>
+                <span style={{ color: "var(--nb-gold)" }}>Just done properly.</span>
               </h2>
 
-              {/* Body */}
               <p
                 data-reveal
-                className="leading-relaxed mb-5 text-[15px] font-light"
-                style={{
-                  opacity: 0,
-                  transform: "translateY(18px)",
-                  fontFamily: "'Lato', sans-serif",
-                }}
+                className="nb-sans text-[15px] leading-[1.9] mb-4"
+                style={{ opacity: 0, transform: "translateY(14px)", color: "rgba(255,255,255,0.74)" }}
               >
-                Novelty Bakery is a retail bakery on High Street North in East Ham, London, that
-                prides itself on quality, from scratch baking done on the premises.
+                Novelty Bakery is a local bakery on High Street North in East Ham — baking on the premises with
+                limited batches throughout the day.
               </p>
 
               <p
                 data-reveal
-                className="leading-relaxed mb-10 text-[15px] text-black font-light"
-                style={{
-                  opacity: 0,
-                  transform: "translateY(18px)",
-                  fontFamily: "'Lato', sans-serif",
-                }}
+                className="nb-sans text-[15px] leading-[1.9] mb-8"
+                style={{ opacity: 0, transform: "translateY(14px)", color: "rgba(255,255,255,0.74)" }}
               >
-                Serving the community since 1985, specialists in puff pastry and fresh bread — the
-                counter is filled with pastries, savoury snacks, loaves and celebration cakes.
+                Known for puff pastry, fresh bread, biscuits and savoury snacks — plus celebration cakes when you
+                need them.
               </p>
 
-              {/* CTA — gold bg, black text */}
-              <div data-reveal style={{ opacity: 0, transform: "translateY(18px)" }}>
+              <div data-reveal style={{ opacity: 0, transform: "translateY(14px)" }}>
                 <Link to="/about">
-                  <button
-                    className="group relative overflow-hidden text-xs font-bold uppercase tracking-[0.22em] px-8 py-3.5 transition-all duration-300"
-                    style={{
-                      fontFamily: "'Lato', sans-serif",
-                      background: "#C8960C",
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.boxShadow =
-                        "0 6px 24px rgba(200,150,12,0.4)";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.boxShadow = "none";
-                    }}
-                  >
-                    <span className="relative z-10 text-white">More about us</span>
-                    <span className="absolute inset-0 bg-black/20 -translate-x-full skew-x-12 group-hover:translate-x-full transition-transform duration-500" />
+                  {/* Uses your global button style if you added nb-btn-primary */}
+                  <button className="nb-btn-primary nb-sans">
+                    More about us
                   </button>
                 </Link>
               </div>
+
+              {/* subtle divider */}
+              <div className="mt-10 h-px w-16" style={{ background: "rgba(255,255,255,0.12)" }} />
             </div>
           </div>
         </div>

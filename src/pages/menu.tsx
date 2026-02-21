@@ -1,184 +1,143 @@
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import Banner from "../features/home/banner";
 import { menu } from "../data/menu";
-import "../styles/products.css";
 
-const Products = () => {
+const Menu = () => {
   return (
-    <div
-      className="min-h-screen text-neutral-900"
-      style={{ fontFamily: "'Baloo 2', cursive" }}
-    >
-      <header>
+    <div className="min-h-screen bg-white text-[var(--nb-black)]">
+      {/* Header stack */}
+      <header className="sticky top-0 z-50 bg-white">
         <Navbar />
+        <Banner />
       </header>
 
-      <div className="menu-page">
-        <div className="pt-28 pb-14 relative">
-          <div className="max-w-6xl mx-auto px-6 relative z-10 text-center">
+      <main>
+        {/* Top intro */}
+        <section className="border-b" style={{ borderColor: "var(--nb-border)" }}>
+          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-14 md:py-18">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="block w-7 h-px" style={{ background: "var(--nb-gold)" }} />
+              <p
+                className="nb-sans text-[10px] tracking-[0.28em] uppercase font-semibold"
+                style={{ color: "var(--nb-gold)" }}
+              >
+                Menu
+              </p>
+            </div>
+
             <h1
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "clamp(2rem, 4vw, 3.5rem)",
-                fontWeight: 700,
-                lineHeight: 1.1,
-              }}
+              className="nb-serif font-bold leading-[0.95]"
+              style={{ fontSize: "clamp(2.6rem, 6vw, 4.6rem)" }}
             >
-              Our Menu
+              Everyday bakes,
+              <br />
+              <span style={{ color: "var(--nb-gold)" }}>limited batches</span>
             </h1>
 
-            <div className="section-divider mt-4" />
-
             <p
-              style={{
-                color: "var(--warm-mid)",
-                fontSize: "14px",
-                maxWidth: "440px",
-                margin: "0 auto",
-                lineHeight: 1.7,
-              }}
+              className="nb-sans mt-5 leading-[1.9]"
+              style={{ color: "var(--nb-text)", maxWidth: 560 }}
             >
-              A sample of what you'll usually find at the counter. <br />
-              <em style={{ opacity: 0.7, fontSize: "12px" }}>
-                Items vary by season & availability.
-              </em>
+              A sample of what you’ll usually find at the counter. Items vary by season & availability.
             </p>
+
+            <div className="mt-8 h-px w-24" style={{ background: "var(--nb-border)" }} />
           </div>
-        </div>
+        </section>
 
-        <div className="bg-white">
-          <div className="max-w-6xl mx-auto px-4 py-8 text-center">
-            <div className="stamp mx-auto mb-3">Everyday bakes</div>
-            <p style={{ color: "var(--warm-muted)", fontSize: "13px" }}>
-              Made on High Street North. Worth the visit.
-            </p>
-          </div>
-        </div>
+        {/* Categories */}
+        <section>
+          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-14 md:py-18">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {menu.map((cat) => (
+                <div
+                  key={cat.title}
+                  className="bg-white"
+                  style={{
+                    border: "1px solid var(--nb-border)",
+                  }}
+                >
+                  <div className="p-7">
+                    <p
+                      className="nb-sans text-[10px] tracking-[0.28em] uppercase font-semibold mb-2"
+                      style={{ color: "var(--nb-gold)" }}
+                    >
+                      Category
+                    </p>
 
-        <main>
-          <div>
-            <div className="max-w-6xl mx-auto px-4 py-14 md:py-18">
-              <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {menu.map((cat, idx) => (
-                  <div
-                    key={cat.title}
-                    className={`category-card p-4 animate-in card-${idx + 1}`}
-                    style={{
-                      opacity: 0,
-                      background: "#fff",
-                      border: "1px solid rgba(184,137,42,0.18)",
-                      borderTop: "1px solid #c9952a",
-                    }}
-                  >
-                    <div className="category-header">
-                      <div className="flex items-start justify-between gap-2 mb-1">
-                        <h3
-                          style={{
-                            fontFamily: "'Playfair Display', serif",
-                            fontSize: "1.25rem",
-                            fontWeight: 700,
-                            color: "var(--warm-dark)",
-                            lineHeight: 1.2,
-                          }}
-                        >
-                          {cat.title}
-                        </h3>
-                      </div>
-                      {cat.intro && (
-                        <p
-                          style={{
-                            fontSize: "12px",
-                            color: "var(--warm-muted)",
-                            lineHeight: 1.6,
-                            marginTop: "6px",
-                          }}
-                        >
-                          {cat.intro}
-                        </p>
-                      )}
-                    </div>
+                    <h2 className="nb-serif text-2xl font-bold mb-2">{cat.title}</h2>
 
-                    {/* thin amber rule between header and items */}
-                    <div
-                      style={{
-                        height: "1px",
-                        background: "rgba(184,137,42,0.15)",
-                        margin: "8px 0 12px",
-                      }}
-                    />
+                    {cat.intro && (
+                      <p className="nb-sans text-[13px] leading-[1.75] mb-5" style={{ color: "var(--nb-text)" }}>
+                        {cat.intro}
+                      </p>
+                    )}
 
-                    <div>
+                    <div className="h-px w-full mb-5" style={{ background: "var(--nb-border)" }} />
+
+                    <div className="space-y-4">
                       {cat.items.map((item) => (
-                        <div key={item.name} className="item-row">
-                          <div style={{ flex: 1, minWidth: 0, position: "relative", zIndex: 1 }}>
-                            <span
-                              style={{
-                                display: "block",
-                                fontWeight: 600,
-                                fontSize: "14px",
-                                color: "var(--warm-dark)",
-                              }}
-                            >
+                        <div key={item.name} className="flex items-start justify-between gap-4">
+                          <div className="min-w-0">
+                            <p className="nb-sans font-semibold text-[14px] text-[var(--nb-black)]">
                               {item.name}
-                            </span>
+                            </p>
                             {item.description && (
-                              <span
-                                style={{
-                                  display: "block",
-                                  fontSize: "12px",
-                                  color: "var(--warm-muted)",
-                                  lineHeight: 1.5,
-                                  marginTop: "2px",
-                                }}
-                              >
+                              <p className="nb-sans text-[12px] leading-[1.6] mt-1" style={{ color: "rgba(17,17,17,0.60)" }}>
                                 {item.description}
-                              </span>
+                              </p>
                             )}
                           </div>
-                          {item.price ? (
-                            <span className="price-badge">{item.price}</span>
-                          ) : item.note ? (
-                            <span className="note-tag">{item.note}</span>
-                          ) : null}
+
+                          {(item.price || item.note) && (
+                            <span
+                              className="nb-sans shrink-0 text-[10px] uppercase tracking-[0.18em] font-semibold px-3 py-1.5"
+                              style={{
+                                border: "1px solid var(--nb-border)",
+                                background: "rgba(176,141,87,0.10)",
+                                color: "var(--nb-black)",
+                              }}
+                            >
+                              {item.price ? item.price : item.note}
+                            </span>
+                          )}
                         </div>
                       ))}
                     </div>
                   </div>
-                ))}
-              </div>
+
+                  {/* subtle gold rule */}
+                  <div className="h-[2px] w-full" style={{ background: "rgba(176,141,87,0.35)" }} />
+                </div>
+              ))}
             </div>
           </div>
+        </section>
 
-          {/* ── FOOTER QUOTE ───────────────────────────────────────────── */}
-          <div
-            style={{
-              background: "#fdf8f0",
-              borderBottom: "1px solid rgba(184,137,42,0.2)",
-            }}
-          >
-            <div className="max-w-6xl mx-auto px-4 py-12 text-center">
-              <p
-                style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontStyle: "italic",
-                  fontSize: "15px",
-                  color: "var(--warm-muted)",
-                  maxWidth: "440px",
-                  margin: "0 auto",
-                  lineHeight: 1.8,
-                }}
-              >
-                "Everything baked in limited batches — once it's gone, it's gone."
-              </p>
-              <div className="section-divider mt-6" style={{ marginBottom: 0 }}></div>
-            </div>
+        {/* Footer quote */}
+        <section style={{ background: "rgba(176,141,87,0.06)" }}>
+          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-14 text-center">
+            <p
+              className="nb-serif italic"
+              style={{
+                fontSize: "16px",
+                color: "rgba(17,17,17,0.62)",
+                maxWidth: 620,
+                margin: "0 auto",
+                lineHeight: 1.9,
+              }}
+            >
+              “Everything baked in limited batches — once it’s gone, it’s gone.”
+            </p>
+            <div className="mx-auto mt-8 h-px w-24" style={{ background: "var(--nb-border)" }} />
           </div>
-        </main>
+        </section>
+      </main>
 
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };
 
-export default Products;
+export default Menu;

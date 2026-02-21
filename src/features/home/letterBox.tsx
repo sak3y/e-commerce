@@ -10,109 +10,130 @@ const LetterBox = () => {
         if (entries[0].isIntersecting) {
           ref.current?.querySelectorAll("[data-reveal]").forEach((el, i) => {
             const h = el as HTMLElement;
-            h.style.transition = `opacity 0.88s ease ${i * 0.13}s, transform 0.88s ease ${i * 0.13}s`;
+            h.style.transition = `opacity 0.85s ease ${i * 0.11}s, transform 0.85s ease ${i * 0.11}s`;
             h.style.opacity = "1";
             h.style.transform = "translateY(0)";
           });
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
+
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section
-      ref={ref}
-      className="relative bg-white overflow-hidden"
-      style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-    >
-      {/* Gold top rule */}
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "rgba(200,150,12,0.2)" }} />
-
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-[1fr_1.1fr] items-stretch min-h-[520px]">
-
+    <section ref={ref} className="relative bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div
+          className="grid md:grid-cols-[1fr_1.1fr] items-stretch overflow-hidden"
+          style={{ border: "1px solid var(--nb-border)" }}
+        >
           {/* Image */}
           <div
             data-reveal
-            className="relative overflow-hidden min-h-[340px]"
-            style={{ opacity: 0, transform: "translateY(24px)" }}
+            className="relative overflow-hidden min-h-[320px] md:min-h-[520px]"
+            style={{ opacity: 0, transform: "translateY(18px)" }}
           >
             <img
               src={Photo}
               loading="lazy"
               alt="Palmiers and pastries"
-              className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.04]"
+              className="w-full h-full object-cover object-center"
             />
-            {/* Red left edge — decorative, creative */}
-            <div className="absolute top-0 bottom-0 left-0 w-[4px]" style={{ background: "#9B1C1C" }} />
-            {/* Subtle dark gradient */}
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(0,0,0,0.08), transparent)" }} />
+            {/* subtle overlay, not dramatic */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to bottom, rgba(17,17,17,0.05) 0%, rgba(17,17,17,0.22) 100%)",
+              }}
+            />
           </div>
 
           {/* Content */}
-          <div className="flex items-center bg-white px-10 sm:px-14 lg:px-16 py-16 md:py-20">
+          <div className="flex items-center bg-white px-8 sm:px-10 lg:px-12 py-12 md:py-14">
             <div className="max-w-lg">
-
-              <div data-reveal className="flex items-center gap-3 mb-6"
-                style={{ opacity: 0, transform: "translateY(18px)" }}>
-                <span className="block w-6 h-[2px]" style={{ background: "#C8960C" }} />
-                <p className="text-[10px] tracking-[0.28em] uppercase"
-                  style={{ color: "#C8960C", fontFamily: "'Lato', sans-serif" }}>Take Home</p>
+              <div
+                data-reveal
+                className="flex items-center gap-3 mb-5"
+                style={{ opacity: 0, transform: "translateY(14px)" }}
+              >
+                <span className="block w-7 h-px" style={{ background: "var(--nb-gold)" }} />
+                <p
+                  className="nb-sans text-[10px] tracking-[0.28em] uppercase font-semibold"
+                  style={{ color: "var(--nb-gold)" }}
+                >
+                  Take Home
+                </p>
               </div>
 
-              <h2 data-reveal className="text-4xl md:text-5xl font-bold text-[#111111] leading-tight mb-8"
-                style={{ opacity: 0, transform: "translateY(18px)" }}>
-                Treats to
+              <h2
+                data-reveal
+                className="nb-serif font-bold leading-[1.02] mb-6"
+                style={{
+                  opacity: 0,
+                  transform: "translateY(14px)",
+                  color: "var(--nb-black)",
+                  fontSize: "clamp(2.1rem, 3.4vw, 3.1rem)",
+                }}
+              >
+                Treats to take home,
                 <br />
-                <span className="italic" style={{ color: "#C8960C" }}>Take Home</span>
+                <span style={{ color: "var(--nb-gold)" }}>fresh daily</span>
               </h2>
 
-              <p data-reveal className="text-[#111111]/60 leading-relaxed mb-5 text-[15px]"
-                style={{ opacity: 0, transform: "translateY(18px)", fontFamily: "'Lato', sans-serif" }}>
+              <p
+                data-reveal
+                className="nb-sans text-[15px] leading-[1.9] mb-4"
+                style={{ opacity: 0, transform: "translateY(14px)", color: "var(--nb-text)" }}
+              >
                 From puff pastries to rusks and biscuits, Novelty Bakery is stocked with bakes to take
                 home for tea time or to share with family.
               </p>
 
-              <p data-reveal className="text-[#111111]/60 leading-relaxed mb-5 text-[15px]"
-                style={{ opacity: 0, transform: "translateY(18px)", fontFamily: "'Lato', sans-serif" }}>
-                Trays of savoury snacks, simple cakes and everyday favourites are baked on High Street
-                North and put straight onto the counter.
+              <p
+                data-reveal
+                className="nb-sans text-[15px] leading-[1.9] mb-6"
+                style={{ opacity: 0, transform: "translateY(14px)", color: "var(--nb-text)" }}
+              >
+                Trays of savoury snacks and everyday favourites are baked on High Street North and
+                put straight onto the counter.
               </p>
 
-              <p data-reveal className="text-[#111111]/60 leading-relaxed mb-10 text-[15px]"
-                style={{ opacity: 0, transform: "translateY(18px)", fontFamily: "'Lato', sans-serif" }}>
-                Pop in, choose a box or a bag of your favourites, and head home with something fresh.
-              </p>
-
-              {/* Stats — gold numbers, black label */}
+              {/* simple brochure stats (no glow) */}
               <div
                 data-reveal
-                className="grid grid-cols-3 gap-4 pt-8"
+                className="grid grid-cols-3 gap-4 pt-6"
                 style={{
                   opacity: 0,
-                  transform: "translateY(18px)",
-                  borderTop: "1px solid rgba(200,150,12,0.25)",
+                  transform: "translateY(14px)",
+                  borderTop: "1px solid var(--nb-border)",
                 }}
               >
                 {[
                   { number: "40+", label: "Years baking" },
                   { number: "Daily", label: "Fresh batches" },
-                  { number: "100%", label: "Made on site" },
+                  { number: "Made", label: "On site" },
                 ].map((stat) => (
                   <div key={stat.label} className="text-center">
-                    <p className="text-2xl font-bold" style={{ color: "#C8960C" }}>{stat.number}</p>
-                    <p className="text-[10px] tracking-[0.15em] uppercase text-[#111111]/45 mt-1"
-                      style={{ fontFamily: "'Lato', sans-serif" }}>{stat.label}</p>
+                    <p className="nb-serif text-2xl font-bold" style={{ color: "var(--nb-gold)" }}>
+                      {stat.number}
+                    </p>
+                    <p
+                      className="nb-sans text-[10px] tracking-[0.16em] uppercase mt-1"
+                      style={{ color: "rgba(17,17,17,0.45)" }}
+                    >
+                      {stat.label}
+                    </p>
                   </div>
                 ))}
               </div>
-
             </div>
           </div>
+
         </div>
       </div>
     </section>
