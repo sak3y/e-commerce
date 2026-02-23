@@ -42,12 +42,12 @@ const Newsletter: React.FC = () => {
 
   return (
     <div className="text-center md:text-left" style={{ fontFamily: "'Lato', sans-serif" }}>
-      <p className="mb-3 leading-relaxed text-white/80">Join our newsletter.</p>
+      <p className="mb-3 leading-relaxed text-black/80">Join our newsletter.</p>
 
       <form
         onSubmit={handleSubmit}
         noValidate
-        className="inline-flex w-full max-w-xs overflow-hidden border border-white/15 bg-white"
+        className="inline-flex w-full max-w-xs overflow-hidden border border-black/15 bg-white"
       >
         <input
           type="email"

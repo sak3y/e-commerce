@@ -90,7 +90,7 @@ const Footer = () => {
           <div className="text-center md:text-right">
             <Newsletter />
 
-            <div className="mt-5 flex justify-center md:justify-end gap-5 text-[10px] uppercase tracking-[0.18em] font-semibold">
+            <div className="mt-5 flex justify-center md:justify-start gap-5 text-[10px] uppercase tracking-[0.18em] font-semibold">
               <Link to="/about" style={{ color: "rgba(1,1,1,0.75)" }} className="hover:text-[#C8960C]">
                 About
               </Link>
