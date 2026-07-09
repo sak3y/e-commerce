@@ -1,6 +1,6 @@
 # 🧁 Novelty Bakery Website
 
-A simple brochure-style website for a small London bakery, built to show off everyday bakes, share the story behind the shop, and make it easy for people to get in touch or visit. It focuses on clear content, friendly copy, and a clean responsive layout.
+A brochure-style website for a small London bakery, built to show off everyday bakes, share the story behind the shop, and make it easy for people to get in touch or visit. It'a goal is to convert interested prospect into customers as well as showcase products so that people can see what they have to offer and enable people to reach out.
 
 ---
 
@@ -22,26 +22,5 @@ A simple brochure-style website for a small London bakery, built to show off eve
 - **Vite** for fast development and bundling  
 
 ---
-
-## 🚀 Getting Started
-
-1. **Clone the repository**
-
-git clone https://github.com/sak3y/novelty-bakery.git
-
-cd novelty-bakery
-
-2. **Install dependencies**
-
-npm install
-
-3. **Run the development server**
-
-
-###### All Right Reserved
-
-npm run dev
-
-4. Open the URL shown in the terminal in your browser.
 
 ##### ALL RIGHTS RESERVED
